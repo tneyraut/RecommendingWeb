@@ -1,0 +1,312 @@
+// New User
+
+// Day : Lundi
+// TimeSolt : 0h - 5h
+array.addObject(["https://moodle.polymtl.ca", 1, 1, 293, 45.496, -73.617])
+
+// TimeSolt : 5h - 9h
+array.addObject(["http://www.lemonde.fr", 1, 6, 70, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 1, 6, 2985, 45.505, -73.613])
+array.addObject(["https://webmail.minesdedouai.fr", 1, 6, 1618, 45.505, -73.613])
+array.addObject(["https://www.jamendo.com", 1, 6, 2144, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 1, 6, 789, 45.496, -73.617])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 1, 6, 990, 45.496, -73.617])
+array.addObject(["https://moodle.polymtl.ca", 1, 6, 247, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 1, 6, 509, 45.505, -73.613])
+
+// TimeSolt : 9h - 12h
+array.addObject(["https://mail.google.com", 1, 10, 875, 45.496, -73.617])
+
+// TimeSolt : 12h - 14h
+array.addObject(["https://webmail.minesdedouai.fr", 1, 13, 1749, 45.496, -73.617])
+array.addObject(["http://facebook.com", 1, 13, 2187, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 1, 13, 176, 45.505, -73.613])
+array.addObject(["https://moodle.polymtl.ca", 1, 13, 134, 45.496, -73.617])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 1, 13, 9, 45.505, -73.613])
+array.addObject(["https://www.microsoft.com", 1, 13, 108, 45.505, -73.613])
+array.addObject(["https://mail.google.com", 1, 13, 2, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 1, 13, 20, 45.505, -73.613])
+array.addObject(["http://9gag.com", 1, 13, 3, 45.496, -73.617])
+array.addObject(["http://www.lequipe.fr", 1, 13, 2, 45.505, -73.613])
+array.addObject(["https://www.imp.polymtl.ca", 1, 13, 2, 45.496, -73.617])
+
+// TimeSolt : 14h - 19h
+array.addObject(["http://www.apple.com", 1, 15, 3639, 45.505, -73.613])
+array.addObject(["http://www.lequipe.fr", 1, 15, 1166, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 1, 15, 1854, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 1, 15, 1137, 45.505, -73.613])
+array.addObject(["https://www.imp.polymtl.ca", 1, 15, 3237, 45.505, -73.613])
+array.addObject(["https://fr.wikipedia.org", 1, 15, 316, 45.505, -73.613])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 1, 15, 33, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 1, 15, 28, 45.496, -73.617])
+
+// TimeSolt : 19h - 24h
+
+
+
+// Day : Mardi
+// TimeSolt : 0h - 5h
+array.addObject(["http://www.apple.com", 2, 1, 2786, 45.505, -73.613])
+
+// TimeSolt : 5h - 9h
+
+// TimeSolt : 9h - 12h
+array.addObject(["http://www.samsung.com", 2, 10, 1839, 45.496, -73.617])
+array.addObject(["http://fr.euronews.com", 2, 10, 639, 45.505, -73.613])
+array.addObject(["http://www.liberation.fr", 2, 10, 2042, 45.505, -73.613])
+
+// TimeSolt : 12h - 14h
+array.addObject(["http://www.clubic.com", 2, 13, 354, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 2, 13, 2647, 45.496, -73.617])
+array.addObject(["http://www.footmercato.net", 2, 13, 986, 45.505, -73.613])
+array.addObject(["https://www.jamendo.com", 2, 13, 61, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 2, 13, 52, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 2, 13, 4, 45.505, -73.613])
+
+// TimeSolt : 14h - 19h
+array.addObject(["https://dossieretudiant.polymtl.ca", 2, 15, 2078, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 2, 15, 952, 45.505, -73.613])
+array.addObject(["http://www.polymtl.ca", 2, 15, 527, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 2, 15, 2823, 45.505, -73.613])
+array.addObject(["http://www.lemonde.fr", 2, 15, 3077, 45.496, -73.617])
+
+// TimeSolt : 19h - 24h
+array.addObject(["https://moodle.polymtl.ca", 2, 20, 752, 45.505, -73.613])
+array.addObject(["http://fr.euronews.com", 2, 20, 3242, 45.496, -73.617])
+array.addObject(["https://www.microsoft.com", 2, 20, 3333, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 2, 20, 2690, 45.496, -73.617])
+array.addObject(["https://www.imp.polymtl.ca", 2, 20, 388, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 2, 20, 6, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 2, 20, 8, 45.496, -73.617])
+array.addObject(["http://www.footmercato.net", 2, 20, 15, 45.505, -73.613])
+array.addObject(["http://www.lequipe.fr", 2, 20, 6, 45.505, -73.613])
+
+
+
+// Day : Mercredi
+// TimeSolt : 0h - 5h
+array.addObject(["https://mail.google.com", 3, 1, 3470, 45.505, -73.613])
+array.addObject(["http://www.apple.com", 3, 1, 921, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 3, 1, 2676, 45.505, -73.613])
+array.addObject(["https://www.deezer.com", 3, 1, 2502, 45.496, -73.617])
+array.addObject(["https://www.microsoft.com", 3, 1, 846, 45.496, -73.617])
+array.addObject(["http://fr.euronews.com", 3, 1, 462, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 3, 1, 81, 45.505, -73.613])
+array.addObject(["http://facebook.com", 3, 1, 67, 45.505, -73.613])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 3, 1, 110, 45.496, -73.617])
+
+// TimeSolt : 5h - 9h
+array.addObject(["https://www.jamendo.com", 3, 6, 3372, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 3, 6, 1947, 45.496, -73.617])
+array.addObject(["https://fr.wikipedia.org", 3, 6, 341, 45.496, -73.617])
+
+// TimeSolt : 9h - 12h
+array.addObject(["http://facebook.com", 3, 10, 1374, 45.505, -73.613])
+array.addObject(["https://www.jamendo.com", 3, 10, 3015, 45.496, -73.617])
+array.addObject(["https://dossieretudiant.polymtl.ca", 3, 10, 1405, 45.496, -73.617])
+array.addObject(["https://moodle.polymtl.ca", 3, 10, 1529, 45.496, -73.617])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 3, 10, 110, 45.505, -73.613])
+array.addObject(["https://mail.google.com", 3, 10, 125, 45.505, -73.613])
+array.addObject(["http://www.apple.com", 3, 10, 0, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 3, 10, 0, 45.496, -73.617])
+
+// TimeSolt : 12h - 14h
+array.addObject(["http://www.lequipe.fr", 3, 13, 152, 45.496, -73.617])
+
+// TimeSolt : 14h - 19h
+array.addObject(["https://fr.wikipedia.org", 3, 15, 2125, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 3, 15, 1242, 45.505, -73.613])
+array.addObject(["http://facebook.com", 3, 15, 3083, 45.505, -73.613])
+array.addObject(["http://9gag.com", 3, 15, 1758, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 3, 15, 29, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 3, 15, 123, 45.505, -73.613])
+array.addObject(["http://www.apple.com", 3, 15, 1134, 45.505, -73.613])
+array.addObject(["http://www.lemonde.fr", 3, 15, 244, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 3, 15, 102, 45.496, -73.617])
+array.addObject(["http://www.lequipe.fr", 3, 15, 43, 45.496, -73.617])
+
+// TimeSolt : 19h - 24h
+array.addObject(["https://mail.google.com", 3, 20, 738, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 3, 20, 535, 45.505, -73.613])
+array.addObject(["http://facebook.com", 3, 20, 1435, 45.505, -73.613])
+array.addObject(["https://www.microsoft.com", 3, 20, 2430, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 3, 20, 3135, 45.505, -73.613])
+array.addObject(["http://www.lequipe.fr", 3, 20, 823, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 3, 20, 216, 45.496, -73.617])
+
+
+
+// Day : Jeudi
+// TimeSolt : 0h - 5h
+array.addObject(["https://webmail.minesdedouai.fr", 4, 1, 1632, 45.505, -73.613])
+
+// TimeSolt : 5h - 9h
+array.addObject(["https://webmail.minesdedouai.fr", 4, 6, 2988, 45.505, -73.613])
+array.addObject(["https://www.imp.polymtl.ca", 4, 6, 1377, 45.496, -73.617])
+array.addObject(["https://dossieretudiant.polymtl.ca", 4, 6, 834, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 4, 6, 1604, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 4, 6, 99, 45.496, -73.617])
+array.addObject(["http://www.apple.com", 4, 6, 83, 45.505, -73.613])
+array.addObject(["http://facebook.com", 4, 6, 431, 45.505, -73.613])
+array.addObject(["http://www.polymtl.ca", 4, 6, 58, 45.496, -73.617])
+array.addObject(["https://fr.wikipedia.org", 4, 6, 3, 45.505, -73.613])
+
+// TimeSolt : 9h - 12h
+
+// TimeSolt : 12h - 14h
+array.addObject(["https://mail.google.com", 4, 13, 3138, 45.505, -73.613])
+array.addObject(["http://fr.euronews.com", 4, 13, 1135, 45.496, -73.617])
+array.addObject(["http://www.footmercato.net", 4, 13, 322, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 4, 13, 290, 45.496, -73.617])
+
+// TimeSolt : 14h - 19h
+array.addObject(["http://www.lemonde.fr", 4, 15, 99, 45.496, -73.617])
+array.addObject(["https://www.jamendo.com", 4, 15, 1654, 45.505, -73.613])
+array.addObject(["https://www.imp.polymtl.ca", 4, 15, 422, 45.505, -73.613])
+array.addObject(["https://fr.wikipedia.org", 4, 15, 2317, 45.505, -73.613])
+
+// TimeSolt : 19h - 24h
+array.addObject(["https://www.imp.polymtl.ca", 4, 20, 2419, 45.505, -73.613])
+array.addObject(["http://9gag.com", 4, 20, 1987, 45.505, -73.613])
+array.addObject(["http://www.apple.com", 4, 20, 1495, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 4, 20, 1759, 45.505, -73.613])
+array.addObject(["http://fr.euronews.com", 4, 20, 3619, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 4, 20, 245, 45.496, -73.617])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 4, 20, 98, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 4, 20, 20, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 4, 20, 27, 45.505, -73.613])
+array.addObject(["https://dossieretudiant.polymtl.ca", 4, 20, 27, 45.505, -73.613])
+array.addObject(["https://mail.google.com", 4, 20, 3, 45.505, -73.613])
+
+
+
+// Day : Vendredi
+// TimeSolt : 0h - 5h
+array.addObject(["http://www.apple.com", 5, 1, 1557, 45.505, -73.613])
+
+// TimeSolt : 5h - 9h
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 5, 6, 595, 45.496, -73.617])
+array.addObject(["http://fr.euronews.com", 5, 6, 543, 45.496, -73.617])
+array.addObject(["http://www.polymtl.ca", 5, 6, 1397, 45.505, -73.613])
+array.addObject(["http://9gag.com", 5, 6, 3164, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 5, 6, 1088, 45.505, -73.613])
+array.addObject(["https://www.imp.polymtl.ca", 5, 6, 1070, 45.496, -73.617])
+array.addObject(["http://facebook.com", 5, 6, 358, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 5, 6, 345, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 5, 6, 73, 45.496, -73.617])
+array.addObject(["https://fr.wikipedia.org", 5, 6, 0, 45.496, -73.617])
+
+// TimeSolt : 9h - 12h
+array.addObject(["http://www.footmercato.net", 5, 10, 801, 45.496, -73.617])
+array.addObject(["https://www.deezer.com", 5, 10, 3126, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 5, 10, 1215, 45.496, -73.617])
+array.addObject(["https://moodle.polymtl.ca", 5, 10, 834, 45.505, -73.613])
+array.addObject(["http://www.lequipe.fr", 5, 10, 516, 45.496, -73.617])
+
+// TimeSolt : 12h - 14h
+array.addObject(["http://www.samsung.com", 5, 13, 1311, 45.505, -73.613])
+array.addObject(["https://www.jamendo.com", 5, 13, 3444, 45.505, -73.613])
+array.addObject(["https://www.deezer.com", 5, 13, 51, 45.505, -73.613])
+array.addObject(["https://webmail.minesdedouai.fr", 5, 13, 90, 45.505, -73.613])
+
+// TimeSolt : 14h - 19h
+array.addObject(["http://www.samsung.com", 5, 15, 1388, 45.496, -73.617])
+array.addObject(["http://www.lequipe.fr", 5, 15, 3190, 45.505, -73.613])
+array.addObject(["https://www.jamendo.com", 5, 15, 850, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 5, 15, 3596, 45.496, -73.617])
+
+// TimeSolt : 19h - 24h
+array.addObject(["http://fr.euronews.com", 5, 20, 72, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 5, 20, 972, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 5, 20, 3517, 45.496, -73.617])
+
+
+
+// Day : Samedi
+// TimeSolt : 0h - 5h
+array.addObject(["https://dossieretudiant.polymtl.ca", 6, 1, 1624, 45.505, -73.613])
+array.addObject(["http://www.liberation.fr", 6, 1, 298, 45.505, -73.613])
+array.addObject(["http://www.lemonde.fr", 6, 1, 1955, 45.496, -73.617])
+array.addObject(["http://www.clubic.com", 6, 1, 3039, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 6, 1, 312, 45.505, -73.613])
+array.addObject(["http://fr.euronews.com", 6, 1, 1268, 45.496, -73.617])
+array.addObject(["http://www.lequipe.fr", 6, 1, 1068, 45.496, -73.617])
+array.addObject(["https://www.microsoft.com", 6, 1, 139, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 6, 1, 210, 45.496, -73.617])
+array.addObject(["http://facebook.com", 6, 1, 69, 45.505, -73.613])
+
+// TimeSolt : 5h - 9h
+array.addObject(["http://facebook.com", 6, 6, 3400, 45.496, -73.617])
+array.addObject(["https://www.imp.polymtl.ca", 6, 6, 268, 45.505, -73.613])
+array.addObject(["http://www.samsung.com", 6, 6, 1274, 45.505, -73.613])
+array.addObject(["http://www.lequipe.fr", 6, 6, 924, 45.496, -73.617])
+
+// TimeSolt : 9h - 12h
+array.addObject(["http://www.liberation.fr", 6, 10, 1446, 45.496, -73.617])
+array.addObject(["http://www.lemonde.fr", 6, 10, 3219, 45.505, -73.613])
+array.addObject(["https://webmail.minesdedouai.fr", 6, 10, 1632, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 6, 10, 494, 45.496, -73.617])
+array.addObject(["http://www.groupes.polymtl.ca/log6308/index.php", 6, 10, 152, 45.496, -73.617])
+array.addObject(["https://www.microsoft.com", 6, 10, 78, 45.496, -73.617])
+array.addObject(["http://www.samsung.com", 6, 10, 195, 45.496, -73.617])
+array.addObject(["http://9gag.com", 6, 10, 214, 45.496, -73.617])
+array.addObject(["https://www.deezer.com", 6, 10, 49, 45.496, -73.617])
+array.addObject(["https://www.jamendo.com", 6, 10, 35, 45.505, -73.613])
+
+// TimeSolt : 12h - 14h
+array.addObject(["https://moodle.polymtl.ca", 6, 13, 538, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 6, 13, 782, 45.496, -73.617])
+
+// TimeSolt : 14h - 19h
+array.addObject(["http://www.clubic.com", 6, 15, 1336, 45.496, -73.617])
+array.addObject(["http://fr.euronews.com", 6, 15, 1440, 45.505, -73.613])
+array.addObject(["https://moodle.polymtl.ca", 6, 15, 2763, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 6, 15, 2762, 45.496, -73.617])
+array.addObject(["https://fr.wikipedia.org", 6, 15, 946, 45.496, -73.617])
+array.addObject(["http://www.footmercato.net", 6, 15, 1152, 45.496, -73.617])
+array.addObject(["https://mail.google.com", 6, 15, 149, 45.496, -73.617])
+array.addObject(["http://facebook.com", 6, 15, 1054, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 6, 15, 108, 45.496, -73.617])
+array.addObject(["https://www.imp.polymtl.ca", 6, 15, 5, 45.505, -73.613])
+
+// TimeSolt : 19h - 24h
+array.addObject(["https://www.deezer.com", 6, 20, 558, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 6, 20, 2229, 45.505, -73.613])
+array.addObject(["http://9gag.com", 6, 20, 2697, 45.505, -73.613])
+array.addObject(["https://mail.google.com", 6, 20, 3505, 45.505, -73.613])
+array.addObject(["http://www.clubic.com", 6, 20, 1373, 45.505, -73.613])
+array.addObject(["http://www.footmercato.net", 6, 20, 1, 45.505, -73.613])
+
+
+
+// Day : Dimanche
+// TimeSolt : 0h - 5h
+
+// TimeSolt : 5h - 9h
+array.addObject(["https://www.imp.polymtl.ca", 7, 6, 3178, 45.505, -73.613])
+array.addObject(["http://facebook.com", 7, 6, 475, 45.496, -73.617])
+array.addObject(["http://9gag.com", 7, 6, 3198, 45.496, -73.617])
+
+// TimeSolt : 9h - 12h
+
+// TimeSolt : 12h - 14h
+array.addObject(["https://webmail.minesdedouai.fr", 7, 13, 1440, 45.505, -73.613])
+array.addObject(["http://www.clubic.com", 7, 13, 1711, 45.496, -73.617])
+
+// TimeSolt : 14h - 19h
+array.addObject(["https://moodle.polymtl.ca", 7, 15, 2334, 45.505, -73.613])
+array.addObject(["http://9gag.com", 7, 15, 3550, 45.505, -73.613])
+array.addObject(["http://fr.euronews.com", 7, 15, 1343, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 7, 15, 597, 45.496, -73.617])
+array.addObject(["https://webmail.minesdedouai.fr", 7, 15, 697, 45.505, -73.613])
+array.addObject(["https://mail.google.com", 7, 15, 1223, 45.505, -73.613])
+array.addObject(["http://facebook.com", 7, 15, 467, 45.505, -73.613])
+
+// TimeSolt : 19h - 24h
+array.addObject(["https://fr.wikipedia.org", 7, 20, 2452, 45.496, -73.617])
+array.addObject(["http://www.liberation.fr", 7, 20, 3268, 45.496, -73.617])
+
+
+
+
+
