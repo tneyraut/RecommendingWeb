@@ -5,10 +5,14 @@
 //  Created by Thomas Mac on 18/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe définit la première interface de l'application. Cette interface permet de sélection un utilisateur, visualiser toutes les données de navigation présentes sur l'application, et visualiser en détails les recommandations pour chaque utilisateur
+//
 
 import UIKit
 
 class UsersTableViewController: UITableViewController {
+    
+    internal static let numberOfUser: Int = 3;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +90,7 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return UsersTableViewController.numberOfUser
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -100,7 +104,14 @@ class UsersTableViewController: UITableViewController {
         
         cell.imageView?.image = UIImage(named: "iconUser.png")
         
-        cell.textLabel?.text = "User" + String(indexPath.row)
+        if (indexPath.row == 0)
+        {
+            cell.textLabel?.text = "User" + String(indexPath.row) + " (utilisateur initialement vide)"
+        }
+        else
+        {
+            cell.textLabel?.text = "User" + String(indexPath.row) + " (utilisateur test)"
+        }
 
         return cell
     }

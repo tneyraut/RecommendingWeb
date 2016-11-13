@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 15/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe permet de définir les timeSolt
+//
 
 import UIKit
 
@@ -17,12 +19,24 @@ class TimeSolt: NSObject {
     private var day: Int!
     
     /*
+     TimeSolt considérés :
      5h - 9h
      9h - 12h
      12h - 14h
      14h - 19h
      19h - 24h
      0h - 5h
+     */
+    
+    /*
+     Jour considérés :
+     Lundi : 1
+     Mardi : 2
+     Mercredi : 3
+     Jeudi : 4
+     Vendredi : 5
+     Samedi : 6
+     Dimanche : 7
      */
     
     internal func initTimeSolt(hour: Int, day: Int)

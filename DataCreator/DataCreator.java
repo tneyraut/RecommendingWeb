@@ -6,6 +6,32 @@ import java.util.Random;
 
 public class DataCreator
 {
+    
+    private static String[] webSiteArray = {"http://www.footmercato.net",//0
+    "http://9gag.com",//1
+    "http://www.polymtl.ca",//2
+    "https://moodle.polymtl.ca",//3
+    "https://www.imp.polymtl.ca",//4
+    "https://webmail.minesdedouai.fr",//5
+    "https://mail.google.com",//6
+    "http://facebook.com",//7
+    "https://dossieretudiant.polymtl.ca",//8
+    "http://www.koreus.com",//9
+    "https://fr.wikipedia.org",//10
+    "https://github.com",//11
+    "http://www.groupes.polymtl.ca/log6308/index.php",//12
+    "http://www.apple.com",//13
+    "https://www.microsoft.com",//14
+    "https://twitter.com",//15
+    "https://www.jamendo.com",//16
+    "https://www.deezer.com",//17
+    "http://www.clubic.com",//18
+    "http://www.lemonde.fr",//19
+    "http://www.lequipe.fr",//20
+    "http://www.liberation.fr",//21
+    "http://fr.euronews.com",//22
+    "http://www.samsung.com"};//23
+    
     public static void main(String[] args)
     {
         if (args.length == 0)
@@ -32,12 +58,13 @@ public class DataCreator
             String  s_txt = "";
             
             String separator = ",";
-            String s_csv = "user_id" + separator + "webSite" + separator + "day" + separator + "hour" + separator + "time(s)" + separator + "latitude" + separator + "longitude\n";
+            String s_csv = "user_id" + separator + "webSite_id" + separator + "time(s)" + separator + "day" + separator + "hour" + separator + "latitude" + separator + "longitude\n";
+            String i_csv = "webSite_id" + "separator" + "webSite\n";
             for (int j=0;j<UserProfile.getNumberOfProfile();j++)
             {
                 Day[] dayArray = getDayArrayForUserId(j);
                 
-                s_txt = "// New User\n\n";
+                s_txt += "// New User\n\n";
                 
                 for (int i=0;i<dayArray.length;i++)
                 {
@@ -49,8 +76,13 @@ public class DataCreator
                 }
                 s_txt += "\n\n";
             }
-            writeInFile(s_txt, ".txt");
-            writeInFile(s_csv, ".csv");
+            for (int i=0;i<webSiteArray.length;i++)
+            {
+                i_csv += (i + 1) + separator + webSiteArray[i] + "\n";
+            }
+            writeInFile(s_txt, "data.txt");
+            writeInFile(s_csv, "data.csv");
+            writeInFile(i_csv, "item.csv");
         }
         else
         {
@@ -59,7 +91,8 @@ public class DataCreator
             String s_txt = "// New User\n\n";
             
             String separator = ",";
-            String s_csv = "user_id" + separator + "webSite" + separator + "day" + separator + "hour" + separator + "time" + separator + "latitude" + separator + "longitude\n";
+            String s_csv = "user_id" + separator + "webSite" + separator + "time" + separator + "day" + separator + "hour" + separator + "latitude" + separator + "longitude\n";
+            String i_csv = "webSite_id" + separator + "webSite\n";
             for (int i=0;i<dayArray.length;i++)
             {
                 s_txt += "// Day : " + dayArray[i].getName() + "\n";
@@ -69,12 +102,17 @@ public class DataCreator
                 s_csv += dayArray[i].getCsvCode();
             }
             s_txt += "\n\n";
-            writeInFile(s_txt, ".txt");
-            writeInFile(s_csv, ".csv");
+            for (int i=0;i<webSiteArray.length;i++)
+            {
+                i_csv += (i + 1) + separator + webSiteArray[i] + "\n";
+            }
+            writeInFile(s_txt, "data.txt");
+            writeInFile(s_csv, "data.csv");
+            writeInFile(i_csv, "item.csv");
         }
     }
     
-    public static Day[] getDayArrayForUserId(int id)
+    private static Day[] getDayArrayForUserId(int id)
     {
         UserProfile userProfile = new UserProfile(id);
         
@@ -92,31 +130,6 @@ public class DataCreator
         // timeSolt de 0 à 5
         // [sérieDeDay N°...][day similaires]
         int[][][] timeSoltSimilarArray = userProfile.getTimeSoltSimilarArray();
-        
-        String[] webSiteArray = {"http://www.footmercato.net",//0
-            "http://9gag.com",//1
-            "http://www.polymtl.ca",//2
-            "https://moodle.polymtl.ca",//3
-            "https://www.imp.polymtl.ca",//4
-            "https://webmail.minesdedouai.fr",//5
-            "https://mail.google.com",//6
-            "http://facebook.com",//7
-            "https://dossieretudiant.polymtl.ca",//8
-            "http://www.koreus.com",//9
-            "https://fr.wikipedia.org",//10
-            "https://github.com",//11
-            "http://www.groupes.polymtl.ca/log6308/index.php",//12
-            "http://www.apple.com",//13
-            "https://www.microsoft.com",//14
-            "https://twitter.com",//15
-            "https://www.jamendo.com",//16
-            "https://www.deezer.com",//17
-            "http://www.clubic.com",//18
-            "http://www.lemonde.fr",//19
-            "http://www.lequipe.fr",//20
-            "http://www.liberation.fr",//21
-            "http://fr.euronews.com",//22
-            "http://www.samsung.com"};//23
         
         double[][] positionArray = {{45.496, -73.617}, {45.505, -73.613}};
         
@@ -174,7 +187,7 @@ public class DataCreator
                         double latitudeWebSite = positionArray[indice][0];
                         double longitudeWebSite = positionArray[indice][1];
                         
-                        Data data = new Data(id, webSite, dayWebSite, hourWebSite, timeWebSite, latitudeWebSite, longitudeWebSite);
+                        Data data = new Data(id, webSite, index, dayWebSite, hourWebSite, timeWebSite, latitudeWebSite, longitudeWebSite);
                         
                         day.addDataForTimeSoltAtIndex(data, j);
                         
@@ -262,11 +275,11 @@ public class DataCreator
         return false;
     }
     
-    private static void writeInFile(String s, String format)
+    private static void writeInFile(String s, String name)
     {
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new FileWriter(new File("data" + format)));
+            writer = new BufferedWriter(new FileWriter(new File(name)));
             
             writer.write(s);
             

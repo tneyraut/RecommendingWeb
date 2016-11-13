@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 06/06/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe permet de redéfinir les positions des éléments graphiques (image et texte) des tableViewCell
+//
 
 import UIKit
 

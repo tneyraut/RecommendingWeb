@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 29/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe définit l'interface présentant en détails les recommandations pour l'utilisateur considéré
+//
 
 import UIKit
 import CoreLocation

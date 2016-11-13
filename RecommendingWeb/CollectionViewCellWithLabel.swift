@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 16/06/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe permet de définir des collectionViewCell intégrant un label (texte)
+//
 
 import UIKit
 

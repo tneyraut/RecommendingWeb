@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private let locationManager = CLLocationManager()
 
+    // Cette méthode est la méthode d'entrée de l'application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         application.statusBarHidden = true;
@@ -25,9 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.locationManager.requestWhenInUseAuthorization()
         }
         
+        // Version finale utilisateur de l'application
         //let mainViewController = MainViewController()
         //let navigationController = UINavigationController(rootViewController: mainViewController)
         
+        // Version test de l'application : instantialisation du navigationController et du rootViewController
         let usersTableViewController = UsersTableViewController(style: .Plain)
         let navigationController = UINavigationController(rootViewController: usersTableViewController)
         
@@ -63,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
+    // Cette méthode est appelée quand l'application rentre en background (l'utilisateur quitte l'application sans la kill). Cette méthode est aussi appelée quand l'application est kill par l'utilisateur. On sauvegarde alors le temps passé sur le site web en cours
     func applicationDidEnterBackground(application: UIApplication) {
         
         Timer.saveTime()
@@ -71,9 +75,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
+    // Cette méthode est appelée quand l'application, qui était en background (non kill), est relancée par l'utilisateur. Le Timer comptant le temps passé sur le site web en cours reprend alors tout seul
     func applicationWillEnterForeground(application: UIApplication) {
         
-        // le timer reprend tout seul là où il s'en était arrêté
+        // Le timer reprend tout seul là où il s'en était arrêté
         
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }

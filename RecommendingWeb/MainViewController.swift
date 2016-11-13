@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 05/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette interface est l'unique interface que l'application finale disposera. Cette interface permet à l'utilisateur de naviguer sur le web et propose les recommandations à l'utilisateur
+//
 
 import UIKit
 import CoreLocation

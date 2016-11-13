@@ -2,16 +2,18 @@ public class Data
 {
     private int user_id;
     private String webSite;
+    private int webSite_id;
     private int dayWebSite;
     private int hourWebSite;
     private int timeWebSite;
     private double latitudeWebSite;
     private double longitudeWebSite;
     
-    Data(int user_id, String webSite, int dayWebSite, int hourWebSite, int timeWebSite, double latitudeWebSite, double longitudeWebSite)
+    Data(int user_id, String webSite, int webSite_id, int dayWebSite, int hourWebSite, int timeWebSite, double latitudeWebSite, double longitudeWebSite)
     {
         this.user_id = user_id;
         this.webSite = webSite;
+        this.webSite_id = webSite_id;
         this.dayWebSite = dayWebSite;
         this.hourWebSite = hourWebSite;
         this.timeWebSite = timeWebSite;
@@ -27,12 +29,17 @@ public class Data
     public String getCsvCode()
     {
         String separator = ",";
-        return this.user_id + separator + this.webSite + separator + this.dayWebSite + separator + this.hourWebSite + separator + this.timeWebSite + separator + this.latitudeWebSite + separator + this.longitudeWebSite + "\n";
+        return (this.user_id + 1) + separator + (this.webSite_id+1) + separator + this.timeWebSite + separator + this.dayWebSite + separator + this.hourWebSite + separator + this.latitudeWebSite + separator + this.longitudeWebSite + "\n";
     }
     
     public String getWebSite()
     {
         return this.webSite;
+    }
+    
+    public int getWebSiteId()
+    {
+        return this.webSite_id;
     }
     
     public int getDayWebSite()

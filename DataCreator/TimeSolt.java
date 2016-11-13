@@ -67,7 +67,7 @@ public class TimeSolt
             int timeWebSite = DataCreator.getRandomTime(remainingTime);
             remainingTime -= timeWebSite;
             
-            Data data = new Data(user_id, timeSolt.dataArray.get(i).getWebSite(), timeSolt.dataArray.get(i).getDayWebSite(), this.hourMin + 1, timeWebSite, timeSolt.dataArray.get(i).getLatitudeWebSite(), timeSolt.dataArray.get(i).getLongitudeWebSite());
+            Data data = new Data(user_id, timeSolt.dataArray.get(i).getWebSite(), timeSolt.dataArray.get(i).getWebSiteId(), timeSolt.dataArray.get(i).getDayWebSite(), this.hourMin + 1, timeWebSite, timeSolt.dataArray.get(i).getLatitudeWebSite(), timeSolt.dataArray.get(i).getLongitudeWebSite());
             
             this.dataArray.add(data);
             

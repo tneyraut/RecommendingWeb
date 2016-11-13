@@ -5,14 +5,18 @@
 //  Created by Thomas Mac on 06/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe définit la structure de données permettant de sauvegarder les données de navigation de l'utilisateur primordiales à notre système de recommandation
+//
 
 import UIKit
 import CoreLocation
 
 class Data: NSObject {
     
+    // Cet attibut définit quel utilisateur est considéré (0 utilisateur initialement vide, > 0 utilisateur test)
     private var user_id = 0
     
+    // Cet attribut permet de sauvegarder les données test ainsi que les données de navigation
     private let data = NSUserDefaults()
     
     private var lastWebSiteVisited: NSString = ""
@@ -30,6 +34,12 @@ class Data: NSObject {
         }
     }
     
+    internal func getUserId() -> Int
+    {
+        return self.user_id
+    }
+    
+    // Cette méthode permet de récupérer dans un tableau toutes les données de navigation présentes sur l'application
     internal func getAllData(numberOfUser: Int) -> NSArray
     {
         let array = NSMutableArray()
@@ -74,6 +84,7 @@ class Data: NSObject {
         return "user" + String(self.user_id) + "_"
     }
     
+    // Cette méthode permet de sauvegarder les données de navigation
     // initialement le compteur est à 0. Les indices vont de 0 à ...
     // récupère l'url host parfaite
     internal func saveData(url: NSString, latitude: Double, longitude: Double)
@@ -122,6 +133,8 @@ class Data: NSObject {
      Samedi : 6
      Dimanche : 7
      */
+    
+    // Cette méthode permet de sauvegarder les données de navigation
     private func addWebSite(string: NSString, latitude: Double, longitude: Double)
     {
         Timer.stopTimerAndSaveTime()
@@ -149,6 +162,7 @@ class Data: NSObject {
         self.data.synchronize()
     }
     
+    // Cette méthode permet de sauvegarder le temps de visite
     internal func saveTime()
     {
         print("save time : \(Timer.getTime())")
@@ -156,10 +170,10 @@ class Data: NSObject {
         self.data.setDouble(self.data.doubleForKey(self.getPrefix() + "timeWebSite\(indice)") + Timer.getTime(), forKey: self.getPrefix() + "timeWebSite\(indice)")
     }
     
+    // Cette méthode permet de supprimer les données les plus anciennes pour qu'elles puissent être remplacées par des données de navigation plus récentes et donc plus proche de la navigation actuelle de l'utilisateur
     private func removeOldData()
     {
-        // on supprime les données les plus anciennes
-        // si on a plus de 4 semaines de données 
+        // on supprime les données les plus anciennes, si on a plus de 4 semaines de données
         // on doit toujours avoir 4 semaines de données 
         // donc 4*7 = 28 jours différents
         // dès qu'on a plus on supprime les données associées au premier jour
@@ -194,8 +208,7 @@ class Data: NSObject {
         return resultat
     }
     
-    // une méthode de ce type pourrait être plus rapide...
-    //private func removeDataUntilIndex(index: Int)
+    // Cette méthode permet de supprimer les données de navigation
     private func removeDataAtIndex(index: Int)
     {
         if (index >= self.data.integerForKey(self.getPrefix() + "compteur") || index < 0)
@@ -224,6 +237,7 @@ class Data: NSObject {
         self.data.synchronize()
     }
     
+    // Cette méthode permet de récupérer les sites web visités au cours du timeSolt considéré
     internal func getWebSiteViewForTimeSolt(timeSolt: TimeSolt) -> NSMutableArray
     {
         let array = NSMutableArray()
@@ -271,6 +285,7 @@ class Data: NSObject {
         return -1
     }
     
+    // Cette méthode permet de récupérer les sites web visités à la position considérée
     internal func getSiteWebForLocation(latitude: Double, longitude: Double) -> NSArray
     {
         let array = NSMutableArray()
@@ -295,6 +310,7 @@ class Data: NSObject {
         return array
     }
     
+    // Cette méthode permet de charger les données test de l'utilisateur test considéré
     private func loadUserData()
     {
         var array = NSArray()
@@ -312,6 +328,7 @@ class Data: NSObject {
         self.loadUserDataArray(array)
     }
     
+    // Cette méthode permet de supprimer toutes les données de navigation de l'utilisateur considéré
     private func removeAllData()
     {
         var i = 0
@@ -330,6 +347,7 @@ class Data: NSObject {
         self.data.synchronize()
     }
     
+    // Cette méthode permet de sauvegarder les données tests de l'utilisateur test considéré
     private func loadUserDataArray(array: NSArray)
     {
         var i = 0
@@ -349,6 +367,7 @@ class Data: NSObject {
         self.data.synchronize()
     }
     
+    // Cette méthode permet de récupérer l'entier associé au jour considéré
     private func getIntDay(day: String) -> Int
     {
         var i = 0

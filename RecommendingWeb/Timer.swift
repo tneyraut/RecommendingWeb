@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 23/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+//  Cette classe static permet de définir le timer permettant de comptabilisé le temps de navigation sur les différents sites
+//
 
 import UIKit
 

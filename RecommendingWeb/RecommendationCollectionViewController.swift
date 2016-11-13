@@ -5,6 +5,8 @@
 //  Created by Thomas Mac on 05/10/2016.
 //  Copyright © 2016 ThomasNeyraut. All rights reserved.
 //
+// Cette classe définit l'interface permettant d'afficher les recomandations faites à l'utilisateur. Cette interface est intégrée à l'interface définit par la classe MainViewController
+//
 
 import UIKit
 import CoreLocation
