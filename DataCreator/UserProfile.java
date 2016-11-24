@@ -40,6 +40,7 @@ public class UserProfile
         {
             this.setProfileDataForUser5();
         }
+        this.randomUser();
     }
     
     // regarde au max 10 sites web ; comportement unique au cours de la semaine ; comportement unique le week-end ; passe du temps sur le web
@@ -207,7 +208,6 @@ public class UserProfile
             {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
             {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
             {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
-            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
             {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)}
         };
         this.maxNbWebSiteVisitedDuringDayTimeSolt = array;
@@ -215,6 +215,83 @@ public class UserProfile
         this.daySimilarArray = new int[0][0];
         
         this.timeSoltSimilarArray = new int[0][0][0];
+    }
+    
+    private void randomUser()
+    {
+        Random rand = new Random();
+        
+        this.nbWebSiteVisited = rand.nextInt(31) + 10;
+        
+        this.pourcentageTempsPasse = rand.nextInt(76) + 10;
+        
+        int[][] array1 = {
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)},
+            {rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited), rand.nextInt(this.nbWebSiteVisited)}
+        };
+        this.maxNbWebSiteVisitedDuringDayTimeSolt = array1;
+        
+        int nbGroupe = rand.nextInt(4);
+        int[] tailleGroupe = new int[nbGroupe];
+        int max = 0;
+        for (int i=0;i<nbGroupe;i++)
+        {
+            tailleGroupe[i] = rand.nextInt(6) + 2;
+            if (max < tailleGroupe[i])
+            {
+                max = tailleGroupe[i];
+            }
+        }
+        int[][] array2 = new int[nbGroupe][max];
+        for (int i=0;i<nbGroupe;i++)
+        {
+            for (int j=0;j<max;j++)
+            {
+                if (j < tailleGroupe[i])
+                {
+                    array2[i][j] = rand.nextInt(7);
+                }
+                else
+                {
+                    array2[i][j] = -1;
+                }
+            }
+        }
+        this.daySimilarArray = array2;
+        
+        int[][] tailleGroupes = new int[7][3];
+        for (int i=0;i<7;i++)
+        {
+            nbGroupe = rand.nextInt(4);
+            for (int j=0;j<nbGroupe;j++)
+            {
+                tailleGroupes[i][j] = rand.nextInt(6);
+            }
+        }
+        int[][][] array3 = new int[7][3][6];
+        for (int i=0;i<7;i++)
+        {
+            for (int j=0;j<3;j++)
+            {
+                for (int k=0;k<6;k++)
+                {
+                    if (k < tailleGroupes[i][j])
+                    {
+                        array3[i][j][k] = rand.nextInt(6);
+                    }
+                    else
+                    {
+                        array3[i][j][k] = -1;
+                    }
+                }
+            }
+        }
+        this.timeSoltSimilarArray = array3;
     }
     
     public int getNbWebSiteVisited()

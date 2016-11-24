@@ -30,7 +30,38 @@ public class DataCreator
     "http://www.lequipe.fr",//20
     "http://www.liberation.fr",//21
     "http://fr.euronews.com",//22
-    "http://www.samsung.com"};//23
+    "http://www.samsung.com",//23
+    "https://www.spotify.com",
+    "http://ici.radio-canada.ca",
+    "http://www.tf1.fr",
+    "http://www.lefigaro.fr",
+    "http://www.france2.fr",
+    "http://www.6play.fr",
+    "http://www.lesechos.fr",
+    "http://www.france3.fr",
+    "http://www.canalplus.fr",
+    "http://www.ledevoir.com",
+    "https://en-marche.fr",
+    "http://www.legorafi.fr",
+    "http://www.studiobagel.com",
+    "http://www.goldenmoustache.com",
+    "https://www.origin.com",
+    "http://www.melty.fr",
+    "http://www.millenium.org",
+    "http://store.steampowered.com",
+    "http://stackoverflow.com",
+    "http://www.openclassrooms.com",
+    "https://www.linkedin.com",
+    "https://www.dropbox.com",
+    "https://drive.google.com",
+    "http://www.cic.gc.ca",
+    "http://www.consulfrance-montreal.org",
+    "http://www.nytimes.com",
+    "http://www.economist.com",
+    "http://www.marmiton.org",
+    "https://www.elamp.fr",
+    "https://slack.com",
+    "https://www.e-180.com"};
     
     public static void main(String[] args)
     {
@@ -58,28 +89,43 @@ public class DataCreator
             String  s_txt = "";
             
             String separator = ",";
-            String s_csv = "user_id" + separator + "webSite_id" + separator + "time(s)" + separator + "day" + separator + "hour" + separator + "latitude" + separator + "longitude\n";
-            String i_csv = "webSite_id" + "separator" + "webSite\n";
-            for (int j=0;j<UserProfile.getNumberOfProfile();j++)
+            String s_csv = "user_id" + separator + "webSite_id" + separator + "time" + separator + "day" + separator + "hour" + separator + "latitude" + separator + "longitude\n";
+            String i_csv = "webSite_id" + separator + "webSite\n";
+            
+            for (int i=0;i<UserProfile.getNumberOfProfile();i++)
             {
-                Day[] dayArray = getDayArrayForUserId(j);
+                Day[] dayArray = getDayArrayForUserId(i);
                 
                 s_txt += "// New User\n\n";
                 
-                for (int i=0;i<dayArray.length;i++)
+                for (int j=0;j<dayArray.length;j++)
                 {
-                    s_txt += "// Day : " + dayArray[i].getName() + "\n";
-                    s_txt += dayArray[i].getAllSwiftCodeOfTimeSolt();
+                    s_txt += "// Day : " + dayArray[j].getName() + "\n";
+                    s_txt += dayArray[j].getAllSwiftCodeOfTimeSolt();
                     s_txt += "\n\n";
                     
-                    s_csv += dayArray[i].getCsvCode();
+                    s_csv += dayArray[j].getCsvCode();
                 }
                 s_txt += "\n\n";
             }
+            
+            int compteur = UserProfile.getNumberOfProfile();
+            for (int i=0;i<100;i++)
+            {
+                Day[] dayArray = getDayArrayForUserId(compteur);
+                System.out.println(i + " / " + compteur + " / " + dayArray.length);
+                for (int j=0;j<dayArray.length;j++)
+                {
+                    s_csv += dayArray[j].getCsvCode();
+                }
+                compteur++;
+            }
+            
             for (int i=0;i<webSiteArray.length;i++)
             {
                 i_csv += (i + 1) + separator + webSiteArray[i] + "\n";
             }
+            
             writeInFile(s_txt, "data.txt");
             writeInFile(s_csv, "data.csv");
             writeInFile(i_csv, "item.csv");
@@ -203,13 +249,16 @@ public class DataCreator
         
         for(int i=0;i<daySimilarArray.length;i++)
         {
-            if (daySimilarArray[i].length != 0)
+            if (daySimilarArray[i].length != 0 && daySimilarArray[i][0] >= 0)
             {
                 Day day = dayArray[daySimilarArray[i][0]];
                 for (int j=1;j<daySimilarArray[i].length;j++)
                 {
-                    Day d = dayArray[daySimilarArray[i][j]];
-                    d.setTimeSoltArray(id, day.getTimeSoltArray(), pourcentageTempsPasse);
+                    if (daySimilarArray[i][j] >= 0)
+                    {
+                        Day d = dayArray[daySimilarArray[i][j]];
+                        d.setTimeSoltArray(id, day.getTimeSoltArray(), pourcentageTempsPasse);
+                    }
                 }
             }
         }
@@ -218,13 +267,16 @@ public class DataCreator
         {
             for(int j=0;j<timeSoltSimilarArray[i].length;j++)
             {
-                if (timeSoltSimilarArray[i][j].length != 0)
+                if (timeSoltSimilarArray[i][j].length != 0 && timeSoltSimilarArray[i][j][0] >= 0)
                 {
                     Day day = dayArray[i];
                     TimeSolt timeSolt = day.getTimeSoltAtIndex(timeSoltSimilarArray[i][j][0]);
                     for (int k=1;k<timeSoltSimilarArray[i][j].length;k++)
                     {
-                        day.setTimeSoltAtIndex(id, timeSoltSimilarArray[i][j][k], timeSolt, pourcentageTempsPasse);
+                        if (timeSoltSimilarArray[i][j][k] >= 0)
+                        {
+                            day.setTimeSoltAtIndex(id, timeSoltSimilarArray[i][j][k], timeSolt, pourcentageTempsPasse);
+                        }
                     }
                 }
             }
