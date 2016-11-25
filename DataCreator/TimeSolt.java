@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 
+/*
+ Cette classe permet de représenter les différents créneaux horaires
+*/
+
 public class TimeSolt
 {
+    // Données des navigations effectuées pendant le créneau horaire
     private ArrayList<Data> dataArray;
     
     private String name;
@@ -10,6 +15,7 @@ public class TimeSolt
     
     private int hourMax;
     
+    // Constructeur initialisant les différents attributs de la classe
     TimeSolt(String name, int hourMin, int hourMax)
     {
         this.name = name;
@@ -31,11 +37,13 @@ public class TimeSolt
         return this.hourMax - this.hourMin;
     }
     
+    // Ajout de données de navigation
     public void addData(Data data)
     {
         this.dataArray.add(data);
     }
     
+    // Cette méthode permet de récupérer le code Swift à intégrer dans le bon fichier du code source de l'application iOS pour y intégrer les données tests
     public String getAllSwiftCodeOfData()
     {
         String resultat = "";
@@ -46,6 +54,7 @@ public class TimeSolt
         return resultat;
     }
     
+    // Cette méthode permet de récupérer le texte constituant le fichier .csv utilisé par le script R
     public String getCsvCode()
     {
         String resultat = "";
@@ -56,6 +65,8 @@ public class TimeSolt
         return resultat;
     }
     
+    // Cette méthode permet supprimer toutes les données de navigation du créneau horaire et d'en ajouter de nouvelles correspondantes à celles d'un autre créneau horaire
+    // Cela signifie que le créneau horaire est similaire à un autre créneau horaire
     public void setData(int user_id, TimeSolt timeSolt, int pourcentageTempsPasse)
     {
         this.dataArray.clear();

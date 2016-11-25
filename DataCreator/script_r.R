@@ -4,7 +4,7 @@ setwd('/Applications/XCodeProjects/RecommendingWeb/DataCreator') # à modifier s
 u.data <- read.csv(file='data.csv', sep=',', header=T)
 i.data <- read.csv(file='item.csv', sep=',', header=T)
 
-# Recommandations du site web que l'utilisateur devrait visiter selon le contexte (heure et jour actuel)
+# Contexte considéré
 user.id <- 1
 # TimeSolt : 0h-5h ; 5h-9h ; 9h-12h ; 12h-14h ; 14h-19h ; 19h-24h
 hour <- 10
@@ -13,6 +13,11 @@ day <- 1
 latitude <- 45.505
 longitude <- -73.613
 
+
+# Première Partie
+# Recommandations du site web que l'utilisateur devrait visiter selon le contexte (heure et jour actuel)
+
+# Permet de récupérer l'heure minimale du créneau horaire correspondant à l'heure fournie en paramètre
 getTimeSoltHourMin <- function(h) { 
   if (h < 5) {
     return(0)
@@ -28,6 +33,7 @@ getTimeSoltHourMin <- function(h) {
   return(19)
 }
 
+# Permet de récupérer l'heure maximale du créneau horaire correspondant à l'heure fournie en paramètre
 getTimeSoltHourMax <- function(h) { 
   if (h < 5) {
     return(5)
@@ -43,6 +49,7 @@ getTimeSoltHourMax <- function(h) {
   return(24)
 }
 
+# Permet de récupérer le jour précédant au jour fourni en paramètre
 getPreviousDay <- function(d) {
   if (d == 1) {
     return(7)
@@ -50,6 +57,7 @@ getPreviousDay <- function(d) {
   return(d-1)
 }
 
+# Permet de récupérer le jour suivant au jour fourni en paramètre
 getNextDay <- function(d) {
   if (d == 7) {
     return(1)
@@ -57,6 +65,8 @@ getNextDay <- function(d) {
   return(d+1)
 }
 
+# Permet de récupérer le créneau horaire précédant au créneau horaire fourni en paramètre
+# Retour sous la forme c(day, hourMin, hourMax)
 getPreviousTimeSolt <- function(d, hourMin) {
   if (hourMin < 5) {
     return(c(getPreviousDay(d),19,24))
@@ -72,6 +82,8 @@ getPreviousTimeSolt <- function(d, hourMin) {
   return(c(d,14,19))
 }
 
+# Permet de récupérer le créneau horaire suivant au créneau horaire fourni en paramètre
+# Retour sous la forme c(day, hourMin, hourMax)
 getNextTimeSolt <- function(d, hourMin, hourMax) {
   if (hourMin < 5) {
     return(c(d,5,9))
@@ -87,6 +99,7 @@ getNextTimeSolt <- function(d, hourMin, hourMax) {
   return(c(getNextDay(d),0,5))
 }
 
+# Permet de récupérer les recommandations de sites web pour le contexte fourni en paramètre mais sans régression linéaire du contexte
 getLazyRecommandations <- function(id, timeSolt.hourMin, timeSolt.hourMax, d, coeff) {
   recommandations <- u.data[u.data$user_id == id,]
   recommandations <- recommandations[recommandations$day == d,]
@@ -105,6 +118,7 @@ getLazyRecommandations <- function(id, timeSolt.hourMin, timeSolt.hourMax, d, co
   return(resultat)
 }
 
+# Permet de récupérer les recommandations pour la localisation fournie en paramètre
 getRecommandationsForLocalization <- function(longitude, latitude, id) {
   recommandations <- u.data[u.data$user_id == id,]
   recommandations <- recommandations[recommandations$latitude == latitude,]
@@ -122,6 +136,7 @@ getRecommandationsForLocalization <- function(longitude, latitude, id) {
   return(resultat)
 }
 
+# Permet de fusionner (union) deux ensembles de recommandations (matrices) en un seul
 mergeRecommandations <- function(matrice, m) {
   if (nrow(m) <= 0) {
     return(matrice)
@@ -144,6 +159,7 @@ mergeRecommandations <- function(matrice, m) {
   return(matrice)
 }
 
+# Permet de récupérer les recommandations par régression linaire du contexte fournie en paramètre
 getRecommandations <- function(id, h, d, with.localisation) {
   coeff <- 1.0
   timeSolt.hourMin <- getTimeSoltHourMin(h)
@@ -169,6 +185,7 @@ getRecommandations <- function(id, h, d, with.localisation) {
   nextDay <- getNextDay(d)
   previousTimeSolt <- getPreviousTimeSolt(d, timeSolt.hourMin)
   nextTimeSolt <- getNextTimeSolt(d, timeSolt.hourMin, timeSolt.hourMax)
+  # Première partie de la régression linéaire du contexte
   for (i in 1:3) {
     resultat <- mergeRecommandations(resultat, getLazyRecommandations(id, timeSolt.hourMin, timeSolt.hourMax, previousDay, coeff))
     resultat <- mergeRecommandations(resultat, getLazyRecommandations(id, timeSolt.hourMin, timeSolt.hourMax, nextDay, coeff))
@@ -182,6 +199,7 @@ getRecommandations <- function(id, h, d, with.localisation) {
     coeff <- coeff - 0.1
   }
   
+  # Seconde partie de la régression linéaire du contexte
   while (coeff > 0) {
     resultat <- mergeRecommandations(resultat, getLazyRecommandations(id, previousTimeSolt[2], previousTimeSolt[3], previousTimeSolt[1], coeff))
     resultat <- mergeRecommandations(resultat, getLazyRecommandations(id, nextTimeSolt[2], nextTimeSolt[3], nextTimeSolt[1], coeff))
@@ -191,23 +209,27 @@ getRecommandations <- function(id, h, d, with.localisation) {
     coeff <- coeff - 0.1
   }
   
+  # Prise en compte oui ou non de la recommandation par localisation 
   if (with.localisation) {
     resultat <- mergeRecommandations(resultat, getRecommandationsForLocalization(latitude, longitude, id))
   }
+  # Normalisaiton des scores de recommandations
   resultat[,2] <- resultat[,2] / sum(resultat[,2])
+  # Trie des recommandations par ordre décroissant de score de recommandations
   return(resultat[order(resultat[,2], decreasing = TRUE),])
 }
 
+# Calcul des recommandations pour le contexte défini précédemment avec la prise en compte de la localisation
 recommandations <- getRecommandations(user.id, hour, day, TRUE)
+# Affichage des résultats de la recommandation
 i.data[recommandations[,1],]
 
 
 
-
+# Deuxième partie
 # Recommandations de nouveaux sites web
 
-# Faire une méthode automatisée
-
+# Permet de formater les résultats de la recommandation précédante
 getFormatageRecommandations <- function(recommendations_k) {
   resultat <- vector(mode = "numeric", length = nrow(i.data))
   resultat[recommendations_k[,1]] <- recommendations_k[,2]
@@ -215,7 +237,7 @@ getFormatageRecommandations <- function(recommendations_k) {
 }
 
 all.recommendations <- matrix(data = NA, nrow = max(u.data$user_id), ncol = nrow(i.data))
-
+# Calcul de la recommmandation précédente pour tous les utilisateurs
 for (u.id in 1:max(u.data$user_id)) {
   recommendations_u.id <- getRecommandations(u.id, hour, day, FALSE)
   recommendations_u.id <- getFormatageRecommandations(recommendations_u.id)
@@ -230,16 +252,15 @@ recommendations_user <- all.recommendations[user.id,]
 recommendations_user_NA <- recommendations_user
 recommendations_user_NA[recommendations_user_NA == 0] <- NA
 
-
 # Distance euclidienne entre un vecteur et les colonnes d'une matrice
 distance.euclidienne <- function(v, m) {
   sqrt(colSums((v - m)^2))
 }
 
 # Trouve les indexes des valeurs minimales d'une matrice différentes de l'indice de référence
-index <- function(m, indice) {
+min.nindex <- function(m, n=5) {
   i <- order(m)
-  return(i[i != indice])
+  return(i[1:n])
 }
 
 # Trouve les indexes des premières 'n' valeurs maximales d'une matrice
@@ -255,7 +276,8 @@ cosinus.vm <- function(v,m) {
 }
 
 distance.user <- distance.euclidienne(recommendations_user, t(m.sparse))
-i.voisins <- index(distance.user, user.id) # on s'intéresse à l'utilisateur user.id donc on le supprime
+i.voisins <- min.nindex(distance.user, 21) # indices des 21 plus proches voisins
+i.voisins <- i.voisins[i.voisins != user.id] # on supprime l'utilisateur considéré de la liste
 
 # Calcule des valeurs centrées par rapport aux lignes
 m.centre <- m - rowMeans(m, na.rm = T)

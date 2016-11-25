@@ -1,14 +1,23 @@
+/*
+ Cette classe définie les données de navigation enregistrées par l'application iOS et exploitable par celle-ci ou par le script R
+*/
+
 public class Data
 {
     private int user_id;
-    private String webSite;
+    
+    // Données définissant le site visité et pendant combien de temps
     private int webSite_id;
+    private String webSite;
+    private int timeWebSite;
+    
+    // Données du contexte de la visite (jour, heure et lieu de la visite)
     private int dayWebSite;
     private int hourWebSite;
-    private int timeWebSite;
     private double latitudeWebSite;
     private double longitudeWebSite;
     
+    // Constructeur pour initialiser les attributs de la classe
     Data(int user_id, String webSite, int webSite_id, int dayWebSite, int hourWebSite, int timeWebSite, double latitudeWebSite, double longitudeWebSite)
     {
         this.user_id = user_id;
@@ -21,11 +30,13 @@ public class Data
         this.longitudeWebSite = longitudeWebSite;
     }
     
+    // Cette méthode permet de récupérer le code Swift à intégrer dans le bon fichier du code source de l'application iOS pour y intégrer les données tests
     public String getSwiftCode()
     {
         return "array.addObject([\"" + this.webSite + "\", " + this.dayWebSite + ", " + this.hourWebSite + ", " + this.timeWebSite + ", " + this.latitudeWebSite + ", " + this.longitudeWebSite + "])\n";
     }
     
+    // Cette méthode permet de récupérer le texte constituant le fichier .csv utilisé par le script R
     public String getCsvCode()
     {
         String separator = ",";

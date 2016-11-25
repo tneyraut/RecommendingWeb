@@ -4,9 +4,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
+/*
+ Cette classe est une classe static
+ C'est l'entrée du programme permettant de générer les données tests
+*/
+
 public class DataCreator
 {
-    
+    // Définit les différents sites web considérés
     private static String[] webSiteArray = {"http://www.footmercato.net",//0
     "http://9gag.com",//1
     "http://www.polymtl.ca",//2
@@ -63,6 +68,7 @@ public class DataCreator
     "https://slack.com",
     "https://www.e-180.com"};
     
+    // Méthode principale
     public static void main(String[] args)
     {
         if (args.length == 0)
@@ -84,6 +90,7 @@ public class DataCreator
             return;
         }
         
+        // Génération de l'intégralité des données tests
         if (Integer.parseInt(args[0]) == -1)
         {
             String  s_txt = "";
@@ -92,6 +99,7 @@ public class DataCreator
             String s_csv = "user_id" + separator + "webSite_id" + separator + "time" + separator + "day" + separator + "hour" + separator + "latitude" + separator + "longitude\n";
             String i_csv = "webSite_id" + separator + "webSite\n";
             
+            // Génération des données tests des profils utilisateur
             for (int i=0;i<UserProfile.getNumberOfProfile();i++)
             {
                 Day[] dayArray = getDayArrayForUserId(i);
@@ -110,6 +118,7 @@ public class DataCreator
             }
             
             int compteur = UserProfile.getNumberOfProfile();
+            // Génération de 100 utilisateurs totalement aléatoire
             for (int i=0;i<100;i++)
             {
                 Day[] dayArray = getDayArrayForUserId(compteur);
@@ -132,6 +141,7 @@ public class DataCreator
         }
         else
         {
+            // Génération d'un seul profil d'utilisateur
             Day[] dayArray = getDayArrayForUserId(Integer.parseInt(args[0]));
             
             String s_txt = "// New User\n\n";
@@ -158,6 +168,7 @@ public class DataCreator
         }
     }
     
+    // Génération de l'intégralité des données de navigation pour le profil utilisateur id
     private static Day[] getDayArrayForUserId(int id)
     {
         UserProfile userProfile = new UserProfile(id);

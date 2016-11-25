@@ -1,5 +1,16 @@
 import java.util.Random;
 
+/* 
+ Cette classe permet de définir différents profils d'utilisateur
+ 
+ Un profil d'utilisateur est défini par :
+ - un nombre de sites web visités (int nbWebSiteVisited),
+ - un pourcentage de temps passé sur le web (int pourcentageTempsPasse),
+ - pour chaque créneau horaire de chaque jour, un nombre maximum de sites web visités (tableau maxNbWebSiteVisitedDuringDayTimeSolt),
+ - les jours pour lesquels la navigation web de l'utilisateur est la même (tableau daySimilarArray),
+ - les créneaux de chaque jour pour lesquels la navigation web de l'utilisateur est la même (tableau timeSoltSimilarArray).
+*/
+
 public class UserProfile
 {
     private static int numberOfProfile = 6;
@@ -14,6 +25,7 @@ public class UserProfile
     
     private int[][][] timeSoltSimilarArray;
     
+    // Constructeur pour définir les différents attributs de la classe selon le profil utilisateur considéré
     UserProfile(int id)
     {
         if (id == 0)
@@ -65,22 +77,12 @@ public class UserProfile
         
         // lundi à Dimanche => de 0 à 6
         // [sérieDeDay N°...][day similaires]
-        //this.daySimilarArray = new int[0][0];
         int[][] tab = { {0,1,2,3,4}, {5,6} };
         this.daySimilarArray = tab;
         
         // timeSolt de 0 à 5
         // [jour N°...][sérieDeTimeSolt N°...][les timeSolt similaires]
         this.timeSoltSimilarArray = new int[0][0][0];
-        /*this.timeSoltSimilarArray = {
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} },
-         { {0,1,2,3,4,5} }
-         };*/
     }
     
     // passe peu de temps sur le web ; sur le web surtout la semaine et peu le week-end ; comportement un chaotique au cours de la semaine
@@ -103,10 +105,7 @@ public class UserProfile
         this.maxNbWebSiteVisitedDuringDayTimeSolt = array;
         
         this.daySimilarArray = new int[0][0];
-        //int[][] tab = { {0,1,2,3,4}, {5,6} };
-        //this.daySimilarArray = tab;
-        
-        //this.timeSoltSimilarArray = new int[0][0][0];
+
         int[][][] t = {
             { {2,4}, {1,5} },
             { {2,4}, {1,5} },
@@ -217,6 +216,7 @@ public class UserProfile
         this.timeSoltSimilarArray = new int[0][0][0];
     }
     
+    // Profil d'utilisateur totalement aléatoire : profil le plus utilisé dans la génération de données
     private void randomUser()
     {
         Random rand = new Random();
