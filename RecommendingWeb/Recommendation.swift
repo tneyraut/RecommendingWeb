@@ -204,6 +204,8 @@ class Recommendation: NSObject {
     
     
     
+    
+    
     // SECONDE PARTIE
     // Recommandation de nouveaux sites web qui devrait intéresser l'utilisateur
     // Cette partie n'est pas encore terminée
@@ -472,17 +474,5 @@ class Recommendation: NSObject {
         }
         return resultat
     }
-    
-    /*
-     cosinus.vm <- function(v,m) {
-     n <- sqrt(colSums(m^2))
-     (v %*% m)/(n * sqrt(sum(v^2)))
-     %*% => matrice multiplication
-     }
-     */
-    /*private func getCosinusResult(v: Array<Double>, m:Array<Array<Double>>) -> Array<Array<Double>>
-    {
-        // resultat matrice 1 ligne et nrow(m) colonnes
-    }*/
     
 }

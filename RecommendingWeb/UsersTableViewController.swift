@@ -12,7 +12,7 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
-    internal static let numberOfUser: Int = 3;
+    internal static let numberOfUser: Int = 8;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class UsersTableViewController: UITableViewController {
         
         let detailsDataCollectionViewController = DetailsDataCollectionViewController(collectionViewLayout: layout)
         
-        detailsDataCollectionViewController.numberOfUser = 3
+        detailsDataCollectionViewController.numberOfUser = UsersTableViewController.numberOfUser
         
         self.navigationController?.pushViewController(detailsDataCollectionViewController, animated: true)
     }
@@ -103,6 +103,10 @@ class UsersTableViewController: UITableViewController {
         cell.accessoryType = .DetailDisclosureButton
         
         cell.imageView?.image = UIImage(named: "iconUser.png")
+        
+        cell.textLabel?.numberOfLines = 0
+        
+        cell.textLabel?.lineBreakMode = .ByWordWrapping
         
         if (indexPath.row == 0)
         {

@@ -84,7 +84,7 @@ public class DataCreator
             return;
         }
         
-        if (Integer.parseInt(args[0]) >= UserProfile.getNumberOfProfile() || Integer.parseInt(args[0]) < -2)
+        if (Integer.parseInt(args[0]) >= UserProfile.getNumberOfProfile() || Integer.parseInt(args[0]) < -1)
         {
             System.out.println("Le profil utilisateur N°" + args[0] + " n'existe pas.");
             return;
@@ -122,7 +122,6 @@ public class DataCreator
             for (int i=0;i<100;i++)
             {
                 Day[] dayArray = getDayArrayForUserId(compteur);
-                System.out.println(i + " / " + compteur + " / " + dayArray.length);
                 for (int j=0;j<dayArray.length;j++)
                 {
                     s_csv += dayArray[j].getCsvCode();

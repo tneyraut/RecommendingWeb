@@ -89,7 +89,6 @@ class Data: NSObject {
     // récupère l'url host parfaite
     internal func saveData(url: NSString, latitude: Double, longitude: Double)
     {
-        //print(url)
         if (url.containsString("https://www.google."))
         {
             self.lastWebSiteVisited = url
@@ -323,6 +322,26 @@ class Data: NSObject {
         else if (self.user_id == 2)
         {
             array = UserData.getDataArrayForUser2()
+        }
+        else if (self.user_id == 3)
+        {
+            array = UserData.getDataArrayForUser3()
+        }
+        else if (self.user_id == 4)
+        {
+            array = UserData.getDataArrayForUser4()
+        }
+        else if (self.user_id == 5)
+        {
+            array = UserData.getDataArrayForUser5()
+        }
+        else if (self.user_id == 6)
+        {
+            array = UserData.getDataArrayForUser6()
+        }
+        else if (self.user_id == 7)
+        {
+            array = UserData.getDataArrayForUser7()
         }
         self.removeAllData()
         self.loadUserDataArray(array)

@@ -14,8 +14,6 @@ private let reuseIdentifier = "Cell"
 
 class DetailsDataCollectionViewController: UICollectionViewController {
     
-    // to do : permettre de trier ?
-    
     private var dataArray: NSArray = []
     
     private let data = Data()
@@ -78,7 +76,7 @@ class DetailsDataCollectionViewController: UICollectionViewController {
         }
         else
         {
-            let array: NSArray = self.dataArray[indexPath.section] as! NSArray
+            let array: NSArray = self.dataArray[indexPath.section - 1] as! NSArray
             
             cell.titleLabel.text = array[indexPath.row] as? String
         }

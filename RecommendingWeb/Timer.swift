@@ -46,14 +46,12 @@ class Timer: NSObject {
     
     internal static func startTimer()
     {
-        //print("start timer")
         Timer.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.timerActionListener), userInfo: nil, repeats: true)
     }
     
     @objc private static func timerActionListener()
     {
         Timer.time += 0.1
-        //print(Timer.time)
     }
     
     internal static func getTime() -> Double

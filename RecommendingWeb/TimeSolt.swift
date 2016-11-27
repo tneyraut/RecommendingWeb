@@ -74,8 +74,6 @@ class TimeSolt: NSObject {
         
         previousTimeSolt.initTimeSolt(self.getPreviousTimeSoltHourMin(), hour_max:self.getPreviousTimeSoltHourMax(), day:self.getPreviousTimeSoltDay())
         
-        //print(String(previousTimeSolt.hourMin) + " - " + String(previousTimeSolt.hourMax) + " <- " + String(self.hourMin) + " - " + String(self.hourMax))
-        
         return previousTimeSolt
     }
     
@@ -84,8 +82,6 @@ class TimeSolt: NSObject {
         let nextTimeSolt = TimeSolt()
         
         nextTimeSolt.initTimeSolt(self.getNextTimeSoltHourMin(), hour_max:self.getNextTimeSoltHourMax(), day:self.getNextTimeSoltDay())
-        
-        //print(String(self.hourMin) + " - " + String(self.hourMax) + " -> " + String(nextTimeSolt.hourMin) + " - " + String(nextTimeSolt.hourMax))
         
         return nextTimeSolt
     }

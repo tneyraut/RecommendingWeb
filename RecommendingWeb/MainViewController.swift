@@ -38,8 +38,6 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.startUpdatingLocation()
-        //print("INIT = \(self.locationManager.location?.coordinate.latitude) \(self.locationManager.location?.coordinate.longitude)")
-        //print(round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000)
         
         self.data.setUserId(self.user_id)
         
@@ -92,6 +90,8 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         self.navigationController?.navigationBar.addSubview(self.searchBar)
         
+        self.setElementPositionForOrientation(UIDevice.currentDevice().orientation.isPortrait)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -103,7 +103,24 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         if (fromInterfaceOrientation.isPortrait)
         {
+            
+            self.setElementPositionForOrientation(false)
+        }
+        else
+        {
+            self.setElementPositionForOrientation(true)
+        }
+    }
+    
+    private func setElementPositionForOrientation(orientationPortrait: Bool)
+    {
+        if (!orientationPortrait)
+        {
             self.recommandationCollectionViewController.collectionView?.frame = CGRectMake(0, 32.0, self.view.frame.size.width, 80.0)
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
+            {
+                self.recommandationCollectionViewController.collectionView?.frame = CGRectMake(0, 32.0, self.view.frame.size.width, 112.0)
+            }
         }
         else
         {
@@ -163,11 +180,6 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         self.setButtonForwardHidden()
         
         let currentURL: NSString = (webView.request?.URL?.scheme)! + "://" + (webView.request?.URL?.host)!
-        
-        //print("\(self.locationManager.location?.coordinate.latitude) \(self.locationManager.location?.coordinate.longitude)")
-        
-        //print((webView.request?.URL?.scheme)! + " + " + (webView.request?.URL?.host)!)
-        //print(currentURL)
         
         self.data.saveData(currentURL, latitude: round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000, longitude: round(1000 * (self.locationManager.location?.coordinate.longitude)!) / 1000)
     }
