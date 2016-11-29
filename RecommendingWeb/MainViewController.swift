@@ -90,7 +90,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         self.navigationController?.navigationBar.addSubview(self.searchBar)
         
-        self.setElementPositionForOrientation(UIDevice.currentDevice().orientation.isPortrait)
+        self.setElementPositionForOrientation(UIDevice.currentDevice().orientation.isFlat || UIDevice.currentDevice().orientation.isPortrait)
         
         // Do any additional setup after loading the view.
     }

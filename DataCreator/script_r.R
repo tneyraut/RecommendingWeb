@@ -1,6 +1,10 @@
+# LOG6308 : Systèmes de recommandations
+# Projet de session
+# Thomas Neyraut 
+
 library(Matrix)
 
-setwd('/Applications/XCodeProjects/RecommendingWeb/DataCreator') # à modifier selon la machine
+setwd('/Users/thomasmac/Documents/XCodeProjects/RecommendingWeb/DataCreator') # à modifier selon la machine
 u.data <- read.csv(file='data.csv', sep=',', header=T)
 i.data <- read.csv(file='item.csv', sep=',', header=T)
 
@@ -295,9 +299,14 @@ for (item.id in 1:nrow(i.data)) {
 }
 
 # On ne prend que les 10 meilleures notes
-meilleurs.site.web <- max.nindex(results, 10)
-i.data$webSite[c(meilleurs.site.web)]
+meilleurs.site.web <- max.nindex(results, 20)
 
-verif <- getRecommandations(1, hour, day, FALSE)
+# Soit on supprime de la liste les sites web que l'utilisateur a déjà visité
+meilleurs.site.web <- meilleurs.site.web[!meilleurs.site.web %in% unique(u.data[u.data$user_id == user.id,]$webSite_id)]
+# Soit on supprime de la liste les sites web recommandé à l'utilisateur pour ce contexte
+verif <- getRecommandations(user.id, hour, day, FALSE)
+meilleurs.site.web <- meilleurs.site.web[!meilleurs.site.web %in% verif[,1]]
+
+i.data$webSite[meilleurs.site.web]
+
 i.data[verif[,1],]
-

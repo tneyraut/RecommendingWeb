@@ -22,17 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.statusBarHidden = true;
         
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
+        if (CLLocationManager.authorizationStatus() == .NotDetermined) {
             self.locationManager.requestWhenInUseAuthorization()
         }
         
         // Version finale utilisateur de l'application
-        let mainViewController = MainViewController()
-        let navigationController = UINavigationController(rootViewController: mainViewController)
+        //let mainViewController = MainViewController()
+        //let navigationController = UINavigationController(rootViewController: mainViewController)
         
         // Version test de l'application : instantialisation du navigationController et du rootViewController
-        //let usersTableViewController = UsersTableViewController(style: .Plain)
-        //let navigationController = UINavigationController(rootViewController: usersTableViewController)
+        let usersTableViewController = UsersTableViewController(style: .Plain)
+        let navigationController = UINavigationController(rootViewController: usersTableViewController)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds);
         
