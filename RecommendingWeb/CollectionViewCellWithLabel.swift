@@ -37,6 +37,4 @@ class CollectionViewCellWithLabel: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
     
-    
-    
 }

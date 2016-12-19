@@ -29,6 +29,10 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
     
     internal var user_id = 0
     
+    private var ongletCollectionViewController:OngletCollectionViewController! = nil
+    
+    private let newOngletButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,6 +59,20 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         self.view.addSubview(self.recommandationCollectionViewController.collectionView!)
         
         var y = (self.recommandationCollectionViewController.collectionView?.frame.origin.y)! + (self.recommandationCollectionViewController.collectionView?.frame.size.height)!
+        
+        self.ongletCollectionViewController = OngletCollectionViewController(collectionViewLayout: layout)
+        self.ongletCollectionViewController.mainViewController = self
+        self.ongletCollectionViewController.collectionView?.frame = CGRectMake(0, y + 2.5, self.view.frame.size.width - 40.0, 40.0)
+        
+        self.view.addSubview(self.ongletCollectionViewController.collectionView!)
+        
+        self.newOngletButton.frame = CGRectMake((self.ongletCollectionViewController.collectionView?.frame.size.width)!, (self.ongletCollectionViewController.collectionView?.frame.origin.y)!, 40.0, 40.0)
+        self.newOngletButton.setTitle("+", forState: .Normal)
+        self.newOngletButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        self.newOngletButton.addTarget(self, action: #selector(self.newOngletButtonActionListener), forControlEvents: .TouchUpInside)
+        self.view.addSubview(self.newOngletButton)
+        
+        y = (self.ongletCollectionViewController.collectionView?.frame.origin.y)! + (self.ongletCollectionViewController.collectionView?.frame.size.height)!
         
         self.webView.frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y)
         self.webView.delegate = self
@@ -90,7 +108,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         self.navigationController?.navigationBar.addSubview(self.searchBar)
         
-        self.setElementPositionForOrientation(UIDevice.currentDevice().orientation.isFlat || UIDevice.currentDevice().orientation.isPortrait)
+        //self.setElementPositionForOrientation(UIDevice.currentDevice().orientation.isFlat || UIDevice.currentDevice().orientation.isPortrait)
         
         // Do any additional setup after loading the view.
     }
@@ -112,6 +130,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         }
     }
     
+    // à modifier : intégrer les nouveaux éléments
     private func setElementPositionForOrientation(orientationPortrait: Bool)
     {
         if (!orientationPortrait)
@@ -173,6 +192,11 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         {
             self.buttonForward.title = ""
         }
+    }
+    
+    @objc private func newOngletButtonActionListener()
+    {
+        self.ongletCollectionViewController.createNewOnglet()
     }
     
     @objc internal func webViewDidFinishLoad(webView: UIWebView) {

@@ -210,7 +210,7 @@ class Recommendation: NSObject {
     // Recommandation de nouveaux sites web qui devrait intéresser l'utilisateur
     // Cette partie n'est pas encore terminée
     
-    internal func getRecommendationOfNewWebSite(timeSolt: TimeSolt, latitude: Double, longitude: Double, data: Data) -> NSArray
+    /*internal func getRecommendationOfNewWebSite(timeSolt: TimeSolt, latitude: Double, longitude: Double, data: Data) -> NSArray
     {
         //let user_id = data.getUserId()
         
@@ -473,6 +473,6 @@ class Recommendation: NSObject {
             j += 1
         }
         return resultat
-    }
+    }*/
     
 }

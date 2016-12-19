@@ -104,7 +104,7 @@ class RecommendationCollectionViewController: UICollectionViewController {
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,25 +117,31 @@ class RecommendationCollectionViewController: UICollectionViewController {
         return self.recommendationArray.count
     }
     
-    func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+    /*func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
     {
         if (self.recommendationArray.count == 0)
         {
             return CGSizeMake(self.collectionView!.frame.size.width,self.cellSize)
         }
         return CGSizeMake(self.cellSize,self.cellSize)
-    }
+    }*/
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCellWithLabel
-    
+        
+        var width = self.cellSize
+        if (self.recommendationArray.count == 0)
+        {
+            width = self.collectionView!.frame.size.width
+        }
+        
         if (UIApplication.sharedApplication().statusBarOrientation.isPortrait)
         {
-            cell.frame = CGRectMake(cell.frame.origin.x, -63.5, cell.frame.size.width, cell.frame.size.height)
+            cell.frame = CGRectMake(cell.frame.origin.x, -63.5, width, self.cellSize)
         }
         else
         {
-            cell.frame = CGRectMake(cell.frame.origin.x, -32, cell.frame.size.width, cell.frame.size.height)
+            cell.frame = CGRectMake(cell.frame.origin.x, -32, width, self.cellSize)
         }
         
         if (self.recommendationArray.count == 0)
