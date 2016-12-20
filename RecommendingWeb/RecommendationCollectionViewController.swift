@@ -38,7 +38,10 @@ class RecommendationCollectionViewController: UICollectionViewController {
         
         self.collectionView?.backgroundColor = UIColor.clear
         
-        self.setRecommandationArray()
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.authorizedAlways)
+        {
+            self.setRecommandationArray()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         

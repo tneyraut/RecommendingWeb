@@ -75,7 +75,8 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         self.webView.frame = CGRect(x: 0, y: y, width: self.view.frame.size.width, height: self.view.frame.size.height - y)
         self.webView.delegate = self
-        self.webView.loadRequest(URLRequest(url:URL(string:"https://www.google.fr")!))
+        //self.webView.loadRequest(URLRequest(url:URL(string:"https://www.google.fr")!))
+        self.webView.loadRequest(URLRequest(url: self.ongletCollectionViewController.getWebSiteOngletActivated()))
         self.view.addSubview(self.webView)
         
         let shadow = NSShadow()
@@ -204,7 +205,12 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         let currentURL: String = (webView.request?.url?.scheme)! + "://" + (webView.request?.url?.host)!
         
-        self.data.saveData(currentURL as NSString, latitude: round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000, longitude: round(1000 * (self.locationManager.location?.coordinate.longitude)!) / 1000)
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.authorizedAlways)
+        {
+            self.data.saveData(currentURL as NSString, latitude: round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000, longitude: round(1000 * (self.locationManager.location?.coordinate.longitude)!) / 1000)
+        }
+        
+        self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: (webView.request?.url)!)
     }
     
     @objc internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -214,11 +220,15 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         if (UIApplication.shared.canOpenURL(URL(string: (string?.lowercased())!)!))
         {
             self.webView.loadRequest(URLRequest(url:URL(string: (string?.lowercased())!)!))
+            
+            //self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: URL(string: (string?.lowercased())!)!)
         }
         else
         {
             let url = URL(string: "https://www.google.fr/#q=" + string!)
             self.webView.loadRequest(URLRequest(url: url!))
+            
+            //self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: url!)
         }
     }
     
@@ -230,6 +240,9 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
     internal func goToWebSite(_ string: String)
     {
         let url = URL(string: string)
+        
+        //self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: url!)
+        
         if (UIApplication.shared.canOpenURL(url!))
         {
             self.webView.loadRequest(URLRequest(url: url!))

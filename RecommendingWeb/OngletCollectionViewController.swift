@@ -32,7 +32,8 @@ class OngletCollectionViewController: UICollectionViewController {
         if (self.sauvegarde.integer(forKey: "nbOnglets") == 0)
         {
             self.sauvegarde.set(1, forKey: "nbOnglets")
-            self.sauvegarde.set("https://www.google.fr", forKey: "onglet_0")
+            self.sauvegarde.set(URL(string: "https://www.google.fr"), forKey: "onglet_0")
+            //self.sauvegarde.set("https://www.google.fr", forKey: "onglet_0")
             self.sauvegarde.synchronize()
         }
         
@@ -50,12 +51,13 @@ class OngletCollectionViewController: UICollectionViewController {
         var i = index
         while (i + 1 < nbOnglets)
         {
-            self.sauvegarde.set(self.sauvegarde.string(forKey: "onglet_\(i + 1)"), forKey: "onglet_\(i)")
+            self.sauvegarde.set(self.sauvegarde.url(forKey: "onglet_\(i + 1)"), forKey: "onglet_\(i)")
             i += 1
         }
         if (nbOnglets == 1)
         {
-            self.sauvegarde.set("https://www.google.fr", forKey: "onglet_0")
+            //self.sauvegarde.set("https://www.google.fr", forKey: "onglet_0")
+            self.sauvegarde.set(URL(string: "https://www.google.fr"), forKey: "onglet_0")
         }
         else
         {
@@ -77,21 +79,29 @@ class OngletCollectionViewController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
     
-    internal func getWebSiteOngletActivated() -> String
+    internal func getWebSiteOngletActivated() -> URL
     {
         if (self.sauvegarde.integer(forKey: "nbOnglets") == 0)
         {
-            return "https://www.google.fr"
+            return URL(string: "https://www.google.fr")!
         }
         else
         {
-            return self.sauvegarde.string(forKey: "onglet_\(self.ongletActivatedIndex)")!
+            return self.sauvegarde.url(forKey: "onglet_\(self.ongletActivatedIndex)")!
         }
+    }
+    
+    internal func setWebSiteOngletActivated(siteWeb: URL)
+    {
+        self.sauvegarde.set(siteWeb, forKey: "onglet_\(self.ongletActivatedIndex)")
+        self.sauvegarde.synchronize()
+        self.collectionView?.reloadData()
     }
     
     internal func createNewOnglet()
     {
         self.sauvegarde.set("https://www.google.fr", forKey: "onglet_\(self.sauvegarde.integer(forKey: "nbOnglets"))")
+        self.sauvegarde.set(URL(string: "https://www.google.fr"), forKey: "onglet_\(self.sauvegarde.integer(forKey: "nbOnglets"))")
         
         self.sauvegarde.set(self.sauvegarde.integer(forKey: "nbOnglets") + 1, forKey: "nbOnglets")
         
@@ -153,7 +163,7 @@ class OngletCollectionViewController: UICollectionViewController {
             cell.backgroundColor = UIColor.darkGray
             //cell.titleLabel.textColor = UIColor.black
         }
-        cell.titleLabel.text = self.sauvegarde.string(forKey: "onglet_\(indexPath.row)")
+        cell.titleLabel.text = self.sauvegarde.url(forKey: "onglet_\(indexPath.row)")?.host
         
         return cell
     }
@@ -169,9 +179,9 @@ class OngletCollectionViewController: UICollectionViewController {
         self.sauvegarde.set(self.ongletActivatedIndex, forKey: "ongletActivatedIndex")
         self.sauvegarde.synchronize()
         
-        self.collectionView?.reloadData()
+        //self.collectionView?.reloadData()
         
-        self.mainViewController.goToWebSite(self.sauvegarde.string(forKey: "onglet_\(self.ongletActivatedIndex)")!)
+        self.mainViewController.goToWebSite((self.sauvegarde.url(forKey: "onglet_\(self.ongletActivatedIndex)")?.absoluteString)!)
         // vérifier que quand on change d'onglet on sauvegarde la navigation précédente (pas décrasement ou autre...)
     }
 
