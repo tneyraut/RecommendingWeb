@@ -14,9 +14,9 @@ private let reuseIdentifier = "Cell"
 
 class DetailsDataCollectionViewController: UICollectionViewController {
     
-    private var dataArray: NSArray = []
+    fileprivate var dataArray: NSArray = []
     
-    private let data = Data()
+    fileprivate let data = Data()
     
     internal var numberOfUser: Int!
     
@@ -27,13 +27,13 @@ class DetailsDataCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(CollectionViewCellWithLabel.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(CollectionViewCellWithLabel.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         self.dataArray = self.data.getAllData(self.numberOfUser)
         
         self.title = "Détails des données"
         
-        self.collectionView?.backgroundColor = UIColor.clearColor()
+        self.collectionView?.backgroundColor = UIColor.clear
         
         // Do any additional setup after loading the view.
     }
@@ -43,30 +43,30 @@ class DetailsDataCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         self.collectionView?.reloadData()
     }
     
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1 + self.dataArray.count
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 7
     }
 
-    func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+    func collectionView(_ collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:IndexPath) -> CGSize
     {
         let size = Int(self.view.frame.size.width / 7)
-        return CGSizeMake(CGFloat(size), CGFloat(size))
+        return CGSize(width: CGFloat(size), height: CGFloat(size))
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCellWithLabel
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCellWithLabel
     
         if (indexPath.section == 0)
         {

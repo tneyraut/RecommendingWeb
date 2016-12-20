@@ -12,11 +12,11 @@ import UIKit
 
 class Timer: NSObject {
 
-    private static var timer: NSTimer! = nil
-    private static var time: Double = 0.0
-    private static var data: Data! = nil
+    fileprivate static var timer: Foundation.Timer! = nil
+    fileprivate static var time: Double = 0.0
+    fileprivate static var data: Data! = nil
 
-    internal static func initTimer(data: Data)
+    internal static func initTimer(_ data: Data)
     {
         if (Timer.data == nil)
         {
@@ -46,10 +46,10 @@ class Timer: NSObject {
     
     internal static func startTimer()
     {
-        Timer.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.timerActionListener), userInfo: nil, repeats: true)
+        Timer.timer = Foundation.Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.timerActionListener), userInfo: nil, repeats: true)
     }
     
-    @objc private static func timerActionListener()
+    @objc fileprivate static func timerActionListener()
     {
         Timer.time += 0.1
     }

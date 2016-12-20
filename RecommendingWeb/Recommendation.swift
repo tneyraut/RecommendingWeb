@@ -16,7 +16,7 @@ class Recommendation: NSObject {
     // Recommandation du site web qui devrait être visité par l'utilisateur à l'instant considéré
     
     // Cette fonction permet de récupérer les recommandations pour un timeSolt et une localisation donnés
-    internal func getRecommendationArrayForTimeSolt(timeSolt: TimeSolt, latitude: Double, longitude: Double, data: Data) -> NSArray
+    internal func getRecommendationArrayForTimeSolt(_ timeSolt: TimeSolt, latitude: Double, longitude: Double, data: Data) -> NSArray
     {
         // Pour effectuer cette recommandation, on se base d'abord sur les sites web que l'utilisateur a visité le même jour (lundi, mardi...) durant le même créneau horaire puis on remonte et descend dans les créneaux horaires suivants. On attribue des notes à chaque item différent pour chaque visite effectuée avec un coeff multiplicateur diminuant au fur et à mesure qu'on s'éloigne du créneaux horaire initiale. On effectue ici une régression linéaire.
         // On utilise ensuite les éléments de location pour récupérer les sites web visités par l'utilisateur à la localisation actuelle.
@@ -94,7 +94,7 @@ class Recommendation: NSObject {
     }
     
     // Cette méthode permet de trier par ordre décroissant de score les recommandations
-    private func sortRecommendationArray(recommendationArray: NSMutableArray) -> NSArray
+    fileprivate func sortRecommendationArray(_ recommendationArray: NSMutableArray) -> NSArray
     {
         let array = NSMutableArray()
         while (recommendationArray.count > 0)
@@ -112,14 +112,14 @@ class Recommendation: NSObject {
                 i += 1
             }
             let webSite = recommendationArray[indice] as! WebSite
-            array.addObject(webSite)
-            recommendationArray.removeObjectAtIndex(indice)
+            array.add(webSite)
+            recommendationArray.removeObject(at: indice)
         }
         return array
     }
     
     // Cette méthode permet de fusionner deux listes de recommandations
-    private func mergeArray(recommandationArray: NSMutableArray, array: NSArray)
+    fileprivate func mergeArray(_ recommandationArray: NSMutableArray, array: NSArray)
     {
         var i = 0
         while (i < array.count)
@@ -134,7 +134,7 @@ class Recommendation: NSObject {
             }
             else if (index < 0)
             {
-                recommandationArray.addObject(webSite)
+                recommandationArray.add(webSite)
             }
             else if (index >= recommandationArray.count)
             {
@@ -145,7 +145,7 @@ class Recommendation: NSObject {
     }
     
     // return -1 si non recommandé
-    private func webSiteRecommandedAtIndex(siteWeb: WebSite, recommandationArray: NSArray) -> Int
+    fileprivate func webSiteRecommandedAtIndex(_ siteWeb: WebSite, recommandationArray: NSArray) -> Int
     {
         var i = 0
         while (i < recommandationArray.count)
@@ -160,7 +160,7 @@ class Recommendation: NSObject {
         return -1
     }
     
-    private func getRecommandationArrayFor(timeSolt: TimeSolt, data: Data, coeff: Double) -> NSArray
+    fileprivate func getRecommandationArrayFor(_ timeSolt: TimeSolt, data: Data, coeff: Double) -> NSArray
     {
         let array = data.getWebSiteViewForTimeSolt(timeSolt)
         
@@ -174,7 +174,7 @@ class Recommendation: NSObject {
         return array
     }
     
-    private func normalizationScoreRecommendation(recommendationArray: NSArray)
+    fileprivate func normalizationScoreRecommendation(_ recommendationArray: NSArray)
     {
         let sum = self.getSumScoreRecommendation(recommendationArray);
         
@@ -187,7 +187,7 @@ class Recommendation: NSObject {
         }
     }
     
-    private func getSumScoreRecommendation(recommendationArray: NSArray) -> Double
+    fileprivate func getSumScoreRecommendation(_ recommendationArray: NSArray) -> Double
     {
         var resultat: Double = 0
         var i = 0

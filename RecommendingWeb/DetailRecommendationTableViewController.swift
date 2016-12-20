@@ -15,38 +15,38 @@ class DetailRecommendationTableViewController: UITableViewController {
 
     internal var user_id: Int!
     
-    private let recommendation = Recommendation()
+    fileprivate let recommendation = Recommendation()
     
-    private var recommendationArray: NSArray = []
+    fileprivate var recommendationArray: NSArray = []
     
-    private let locationManager = CLLocationManager()
+    fileprivate let locationManager = CLLocationManager()
     
-    private let data = Data()
+    fileprivate let data = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        self.tableView.registerClass(TableViewCellWithImage.classForCoder(), forCellReuseIdentifier:"cell")
+        self.tableView.register(TableViewCellWithImage.classForCoder(), forCellReuseIdentifier:"cell")
         
         self.title = "Recommandations : User\(self.user_id)"
         
         self.data.setUserId(self.user_id)
         
-        let date = NSDate()
+        let date = Date()
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone()
+        let dateFormatter = DateFormatter()
+        //dateFormatter.timeZone = TimeZone()
         dateFormatter.dateFormat = "ccc"
-        let day = self.getIntDay(dateFormatter.stringFromDate(date))
+        let day = self.getIntDay(dateFormatter.string(from: date))
         
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: date)
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([NSCalendar.Unit.hour, NSCalendar.Unit.minute], from: date)
         let hour = components.hour
         
         let timeSolt = TimeSolt()
-        timeSolt.initTimeSolt(hour, day: day)
+        timeSolt.initTimeSolt(hour!, day: day)
         
         self.recommendationArray = self.recommendation.getRecommendationArrayForTimeSolt(timeSolt, latitude: round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000, longitude: round(1000 * (self.locationManager.location?.coordinate.longitude)!) / 1000, data: self.data)
         
@@ -62,7 +62,7 @@ class DetailRecommendationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func getIntDay(day: String) -> Int
+    fileprivate func getIntDay(_ day: String) -> Int
     {
         var i = 0
         let array = ["Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam.", "Dim."]
@@ -79,31 +79,31 @@ class DetailRecommendationTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.recommendationArray.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 2
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75.0
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let webSite = self.recommendationArray[section] as! WebSite
         return webSite.getName()
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCellWithImage
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellWithImage
         
-        cell.accessoryType = .None
+        cell.accessoryType = .none
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         
         let webSite  = self.recommendationArray[indexPath.section] as! WebSite
         

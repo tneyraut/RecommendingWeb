@@ -12,13 +12,13 @@ import UIKit
 
 class WebSite: NSObject {
 
-    private var address: String!
+    fileprivate var address: String!
     
-    private var score: Double!
+    fileprivate var score: Double!
     
-    private var time: Double!
+    fileprivate var time: Double!
     
-    internal func initWebSite(address: String, time: Double)
+    internal func initWebSite(_ address: String, time: Double)
     {
         self.address = address
         self.score = 0
@@ -33,21 +33,21 @@ class WebSite: NSObject {
     // Cette méthode permet d'extraire de l'attribut address le nom du site (exemple : pour http://www.polymtl.ca, on obtient polymtl)
     internal func getName() -> String
     {
-        var name: String = (NSURL(string: self.address)?.host)!
+        var name: String = (URL(string: self.address)?.host)!
         
         let array: NSArray = ["www.", ".fr", "http://", "https://", ".ca", ".com", ".net", "fr.", "en.", ".en"]
         
         var i = 0
         while (i < array.count)
         {
-            name = name.stringByReplacingOccurrencesOfString(array[i] as! String, withString:"")
+            name = name.replacingOccurrences(of: array[i] as! String, with:"")
             i += 1
         }
         return name
     }
     
     // Cette méthode permet de comptabilisée le temps passé sur le site
-    internal func addTime(time: Double)
+    internal func addTime(_ time: Double)
     {
         self.time = self.time + time
     }
@@ -58,7 +58,7 @@ class WebSite: NSObject {
     }
     
     // Cette méthode comptabilise le score de recommandation
-    internal func addScore(score: Double, coeff: Double)
+    internal func addScore(_ score: Double, coeff: Double)
     {
         self.score = self.score + score * coeff
     }
@@ -69,7 +69,7 @@ class WebSite: NSObject {
     }
     
     // Cette méthode normalise le score de recommandation pour qu'il soit compris entre 0 et 1
-    internal func normalizationScore(norm: Double)
+    internal func normalizationScore(_ norm: Double)
     {
         if (norm != 0)
         {

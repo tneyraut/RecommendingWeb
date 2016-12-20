@@ -17,16 +17,16 @@ class CollectionViewCellWithLabel: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.titleLabel.frame = CGRectMake(5.0, 0.0, self.frame.size.width - 10.0, self.frame.size.height)
-        self.titleLabel.textAlignment = NSTextAlignment.Center
+        self.titleLabel.frame = CGRect(x: 5.0, y: 0.0, width: self.frame.size.width - 10.0, height: self.frame.size.height)
+        self.titleLabel.textAlignment = NSTextAlignment.center
         self.titleLabel.shadowColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.8)
-        self.titleLabel.shadowOffset = CGSizeMake(0, 1)
-        self.titleLabel.textColor = UIColor.blackColor()
+        self.titleLabel.shadowOffset = CGSize(width: 0, height: 1)
+        self.titleLabel.textColor = UIColor.black
         self.titleLabel.numberOfLines = 5
-        self.titleLabel.lineBreakMode = .ByClipping
+        self.titleLabel.lineBreakMode = .byClipping
         self.addSubview(self.titleLabel)
         
-        self.layer.borderColor = UIColor(red:213.0/255.0, green:210.0/255.0, blue:199.0/255.0, alpha:1.0).CGColor
+        self.layer.borderColor = UIColor(red:213.0/255.0, green:210.0/255.0, blue:199.0/255.0, alpha:1.0).cgColor
         
         self.layer.borderWidth = 2.5
         self.layer.cornerRadius = 7.5

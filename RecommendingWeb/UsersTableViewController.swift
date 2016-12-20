@@ -17,13 +17,13 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        self.tableView.registerClass(TableViewCellWithImage.classForCoder(), forCellReuseIdentifier:"cell")
+        self.tableView.register(TableViewCellWithImage.classForCoder(), forCellReuseIdentifier:"cell")
         
         self.title = "Sélection d'un utilisateur"
         
-        let buttonPrevious = UIBarButtonItem(title: "Retour", style: .Done, target: nil, action: nil)
+        let buttonPrevious = UIBarButtonItem(title: "Retour", style: .done, target: nil, action: nil)
         
         self.navigationItem.backBarButtonItem = buttonPrevious
         
@@ -39,7 +39,7 @@ class UsersTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated:true)
         
         self.navigationController?.toolbar.barTintColor = UIColor(red:0.439, green:0.776, blue:0.737, alpha:1)
@@ -48,29 +48,29 @@ class UsersTableViewController: UITableViewController {
         
         shadow.shadowColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.8)
         
-        shadow.shadowOffset = CGSizeMake(0, 1)
+        shadow.shadowOffset = CGSize(width: 0, height: 1)
         
-        let showDataButton = UIBarButtonItem(title:"Show data", style:.Plain, target:self, action:#selector(self.showDataButtonActionListener))
+        let showDataButton = UIBarButtonItem(title:"Show data", style:.plain, target:self, action:#selector(self.showDataButtonActionListener))
         
-        showDataButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], forState:UIControlState.Normal)
+        showDataButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], for:UIControlState())
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target:nil, action:nil)
         
         self.navigationController?.toolbar.setItems([flexibleSpace, showDataButton, flexibleSpace], animated:true)
         
         super.viewDidAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated:true)
         
         super.viewDidDisappear(animated)
     }
     
-    @objc private func showDataButtonActionListener()
+    @objc fileprivate func showDataButtonActionListener()
     {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.Vertical
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
@@ -83,30 +83,30 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return UsersTableViewController.numberOfUser
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75.0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCellWithImage
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellWithImage
 
-        cell.accessoryType = .DetailDisclosureButton
+        cell.accessoryType = .detailDisclosureButton
         
         cell.imageView?.image = UIImage(named: "iconUser.png")
         
         cell.textLabel?.numberOfLines = 0
         
-        cell.textLabel?.lineBreakMode = .ByWordWrapping
+        cell.textLabel?.lineBreakMode = .byWordWrapping
         
         if (indexPath.row == 0)
         {
@@ -120,7 +120,7 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainViewController = MainViewController()
         
         mainViewController.user_id = indexPath.row
@@ -128,8 +128,8 @@ class UsersTableViewController: UITableViewController {
         self.navigationController?.pushViewController(mainViewController, animated:true)
     }
     
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        let detailRecommendationTableViewController = DetailRecommendationTableViewController(style: .Plain)
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let detailRecommendationTableViewController = DetailRecommendationTableViewController(style: .plain)
         
         detailRecommendationTableViewController.user_id = indexPath.row
         

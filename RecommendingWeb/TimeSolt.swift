@@ -12,11 +12,11 @@ import UIKit
 
 class TimeSolt: NSObject {
 
-    private var hourMin: Int!
+    fileprivate var hourMin: Int!
     
-    private var hourMax: Int!
+    fileprivate var hourMax: Int!
     
-    private var day: Int!
+    fileprivate var day: Int!
     
     /*
      TimeSolt considérés :
@@ -39,14 +39,14 @@ class TimeSolt: NSObject {
      Dimanche : 7
      */
     
-    internal func initTimeSolt(hour: Int, day: Int)
+    internal func initTimeSolt(_ hour: Int, day: Int)
     {
         self.setTimeSoltHourMin(hour)
         self.setTimeSoltHourMax(hour)
         self.day = day
     }
     
-    internal func initTimeSolt(hour_min: Int, hour_max: Int, day: Int)
+    internal func initTimeSolt(_ hour_min: Int, hour_max: Int, day: Int)
     {
         self.hourMin = hour_min
         self.hourMax = hour_max
@@ -104,7 +104,7 @@ class TimeSolt: NSObject {
         return previousDayTimeSolt
     }
     
-    private func getPreviousTimeSoltHourMin() -> Int
+    fileprivate func getPreviousTimeSoltHourMin() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -129,7 +129,7 @@ class TimeSolt: NSObject {
         return 19
     }
     
-    private func getPreviousTimeSoltHourMax() -> Int
+    fileprivate func getPreviousTimeSoltHourMax() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -154,7 +154,7 @@ class TimeSolt: NSObject {
         return 24
     }
     
-    private func getPreviousTimeSoltDay() -> Int
+    fileprivate func getPreviousTimeSoltDay() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -179,7 +179,7 @@ class TimeSolt: NSObject {
         return self.getPreviousDay()
     }
  
-    private func getNextTimeSoltHourMin() -> Int
+    fileprivate func getNextTimeSoltHourMin() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -204,7 +204,7 @@ class TimeSolt: NSObject {
         return 5
     }
     
-    private func getNextTimeSoltHourMax() -> Int
+    fileprivate func getNextTimeSoltHourMax() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -229,7 +229,7 @@ class TimeSolt: NSObject {
         return 9
     }
     
-    private func getNextTimeSoltDay() -> Int
+    fileprivate func getNextTimeSoltDay() -> Int
     {
         if (self.hourMin == 5)
         {
@@ -254,7 +254,7 @@ class TimeSolt: NSObject {
         return self.day
     }
     
-    private func getNextDay() -> Int
+    fileprivate func getNextDay() -> Int
     {
         if (self.day < 7)
         {
@@ -263,7 +263,7 @@ class TimeSolt: NSObject {
         return 1
     }
     
-    private func getPreviousDay() -> Int
+    fileprivate func getPreviousDay() -> Int
     {
         if (self.day > 1)
         {
@@ -272,7 +272,7 @@ class TimeSolt: NSObject {
         return 7
     }
     
-    private func setTimeSoltHourMin(hour: Int)
+    fileprivate func setTimeSoltHourMin(_ hour: Int)
     {
         self.hourMin = 0
         if (5 <= hour && hour < 9)
@@ -297,7 +297,7 @@ class TimeSolt: NSObject {
         }
     }
     
-    private func setTimeSoltHourMax(hour: Int)
+    fileprivate func setTimeSoltHourMax(_ hour: Int)
     {
         self.hourMax = 5
         if (5 <= hour && hour < 9)
