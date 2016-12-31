@@ -29,9 +29,9 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
     
     internal var user_id = 0
     
-    fileprivate var ongletCollectionViewController:OngletCollectionViewController! = nil
+    //fileprivate var ongletCollectionViewController:OngletCollectionViewController! = nil
     
-    fileprivate let newOngletButton = SpecificButton(type: .roundedRect)
+    //fileprivate let newOngletButton = SpecificButton(type: .roundedRect)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         
         var y = (self.recommandationCollectionViewController.collectionView?.frame.origin.y)! + (self.recommandationCollectionViewController.collectionView?.frame.size.height)! + 0.1
         
-        self.ongletCollectionViewController = OngletCollectionViewController(collectionViewLayout: layout)
+        /*self.ongletCollectionViewController = OngletCollectionViewController(collectionViewLayout: layout)
         self.ongletCollectionViewController.mainViewController = self
         self.ongletCollectionViewController.collectionView?.frame = CGRect(x: 0, y: y, width: self.view.frame.size.width - 40.0, height: 40.0)
         
@@ -71,12 +71,12 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
         self.newOngletButton.addTarget(self, action: #selector(self.newOngletButtonActionListener), for: .touchUpInside)
         self.view.addSubview(self.newOngletButton)
         
-        y = (self.ongletCollectionViewController.collectionView?.frame.origin.y)! + (self.ongletCollectionViewController.collectionView?.frame.size.height)!
+        y = (self.ongletCollectionViewController.collectionView?.frame.origin.y)! + (self.ongletCollectionViewController.collectionView?.frame.size.height)!*/
         
         self.webView.frame = CGRect(x: 0, y: y, width: self.view.frame.size.width, height: self.view.frame.size.height - y)
         self.webView.delegate = self
-        //self.webView.loadRequest(URLRequest(url:URL(string:"https://www.google.fr")!))
-        self.webView.loadRequest(URLRequest(url: self.ongletCollectionViewController.getWebSiteOngletActivated()))
+        self.webView.loadRequest(URLRequest(url:URL(string:"https://www.google.fr")!))
+        //self.webView.loadRequest(URLRequest(url: self.ongletCollectionViewController.getWebSiteOngletActivated()))
         self.view.addSubview(self.webView)
         
         let shadow = NSShadow()
@@ -196,7 +196,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
     
     @objc fileprivate func newOngletButtonActionListener()
     {
-        self.ongletCollectionViewController.createNewOnglet()
+        //self.ongletCollectionViewController.createNewOnglet()
     }
     
     @objc internal func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -210,7 +210,7 @@ class MainViewController: UIViewController, UIWebViewDelegate, UISearchBarDelega
             self.data.saveData(currentURL as NSString, latitude: round(1000 * (self.locationManager.location?.coordinate.latitude)!) / 1000, longitude: round(1000 * (self.locationManager.location?.coordinate.longitude)!) / 1000)
         }
         
-        self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: (webView.request?.url)!)
+        //self.ongletCollectionViewController.setWebSiteOngletActivated(siteWeb: (webView.request?.url)!)
     }
     
     @objc internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

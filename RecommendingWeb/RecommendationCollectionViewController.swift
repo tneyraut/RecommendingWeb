@@ -107,11 +107,12 @@ class RecommendationCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        print("testRecommendation")
         if (self.recommendationArray.count == 0)
         {
             self.collectionView?.frame = CGRect(x: 0, y: self.collectionView!.frame.origin.y, width: self.view.frame.size.width, height: self.collectionView!.frame.size.height)

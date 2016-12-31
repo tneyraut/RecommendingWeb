@@ -36,7 +36,6 @@ class OngletCollectionViewController: UICollectionViewController {
             //self.sauvegarde.set("https://www.google.fr", forKey: "onglet_0")
             self.sauvegarde.synchronize()
         }
-        
         // Do any additional setup after loading the view.
     }
 
@@ -130,6 +129,9 @@ class OngletCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        
+        //Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'UICollectionView received layout attributes for a cell with an index path that does not exist: <NSIndexPath: 0xc000000000200016> {length = 2, path = 0 - 1}'
+        print("testOnglet")
         if (self.sauvegarde.integer(forKey: "nbOnglets") == 0)
         {
             return 1
@@ -179,7 +181,7 @@ class OngletCollectionViewController: UICollectionViewController {
         self.sauvegarde.set(self.ongletActivatedIndex, forKey: "ongletActivatedIndex")
         self.sauvegarde.synchronize()
         
-        //self.collectionView?.reloadData()
+        self.collectionView?.reloadData()
         
         self.mainViewController.goToWebSite((self.sauvegarde.url(forKey: "onglet_\(self.ongletActivatedIndex)")?.absoluteString)!)
         // vérifier que quand on change d'onglet on sauvegarde la navigation précédente (pas décrasement ou autre...)
